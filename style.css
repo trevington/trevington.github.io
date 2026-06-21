@@ -243,3 +243,72 @@ h1, .spec-card .spec-value, .tech-callout h4, .tech-table th { color: var(--text
     .floating-dash .dash-grid { grid-template-columns: 1fr; gap: 0.5rem; }
     .floating-dash .dash-card { padding: 0.5rem 0.75rem; }
 }
+/* --- 4414 HighTide Interactive Workspace Blueprint Layout (Fixed Bounds) --- */
+.interactive-diagram-container {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 2rem 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.diagram-viewport {
+    position: relative; /* Rigid reference frame constraints for hotspots */
+    width: 50%;
+    max-width: 550px;
+    height: auto;
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+.diagram-base-img {
+    width: 100%;
+    max-width: 100%; /* Prevents PNG/JPG scaling overflow completely */
+    height: auto;
+    display: block;
+}
+
+/* Pulsing Hotspot Target Vectors */
+.hotspot-node {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%); /* Centers perfectly over coordinate points */
+    z-index: 10;
+    outline: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hotspot-node::after {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    animation: nodePulse 2s infinite ease-out;
+    pointer-events: none;
+}
+
+@keyframes nodePulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+.hotspot-node:hover, .hotspot-node.active {
+    background-color: var(--accent-color);
+    border-color: #fff;
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: translate(-50%, -50%) scale(1.2);
+}
