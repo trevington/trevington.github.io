@@ -13,7 +13,9 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body class="dark-theme"> <nav class="topbar">
+<body class="dark-theme">
+
+    <nav class="topbar">
         <div class="topbar-left">
             <div class="topbar-brand">
                 <h2>CR30 EV</h2>
@@ -39,42 +41,103 @@
         <section id="overview" class="binder-section">
             <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
             <h1>Cyclone Racing CR30 Accumulator</h1>
-            <p class="lead-text">Click on any system hotspot node below to isolate its mechanical, electrical, or structural documentation matrix.</p>
+            <p class="lead-text">Click on any system hotspot node over the tractive battery layout to instantly open its technical documentation entry below.</p>
 
             <div class="interactive-diagram-container">
-                <div class="diagram-viewport">
-                    <img src="TB-001-CR30_Render_1.png" alt="CR30 Accumulator Assembly Render" class="diagram-base-img">
-                    <button class="hotspot-node active" style="top: 25%; left: 45%;" onclick="focusMechanism(event, 'mech-housing', '#mechanical')" data-label="Housing"></button>
-                    <button class="hotspot-node" style="top: 45%; left: 30%;" onclick="focusMechanism(event, 'mech-baskets', '#mechanical')" data-label="Baskets"></button>
-                    <button class="hotspot-node" style="top: 75%; left: 80%;" onclick="focusMechanism(event, 'mech-mounts', '#mechanical')" data-label="Mounts"></button>
-                    <button class="hotspot-node" style="top: 35%; left: 60%;" onclick="focusMechanism(event, 'prop-hvd', '#motor-inverter')" data-label="Power Prism"></button>
-                </div>
-
-                <div class="annotation-layout left-anno">
-                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                <div class="annotation-layout">
+                    <div class="anno-card" onclick="focusMechanism(null, 'sub-housing', '#mechanical')">
                         <h4>ALUMINUM HOUSING</h4>
                         <p>Self-jigging slot & tab waterjet seams to prevent raw panel distortion.</p>
                     </div>
-                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                    <div class="anno-card" onclick="focusMechanism(null, 'sub-baskets', '#mechanical')">
                         <h4>MODULE BASKETS</h4>
-                        <p>PAHT-CF carbon-fiber nylon holding 28 pouch cells in a rigid cell matrix.</p>
+                        <p>PAHT-CF carbon-fiber nylon holding cell matrices perfectly rigid.</p>
                     </div>
                 </div>
 
-                <div class="annotation-layout right-anno">
-                    <div class="anno-card" onclick="scrollToId('#motor-inverter')">
+                <div class="diagram-viewport">
+                    <img src="TB-001-CR30_Render_1.png" alt="CR30 Accumulator Assembly Render" class="diagram-base-img">
+                    <button class="hotspot-node active" style="top: 30%; left: 45%;" onclick="focusMechanism(event, 'sub-housing', '#mechanical')" data-label="Housing Structure"></button>
+                    <button class="hotspot-node" style="top: 55%; left: 52%;" onclick="focusMechanism(event, 'sub-baskets', '#mechanical')" data-label="Module Baskets"></button>
+                    <button class="hotspot-node" style="top: 78%; left: 78%;" onclick="focusMechanism(event, 'sub-mounts', '#tractive-battery')" data-label="Chassis Mounts"></button>
+                    <button class="hotspot-node" style="top: 45%; left: 24%;" onclick="focusMechanism(event, 'sub-hvd', '#motor-inverter')" data-label="Power Prism HVD"></button>
+                </div>
+
+                <div class="annotation-layout">
+                    <div class="anno-card" onclick="focusMechanism(null, 'sub-hvd', '#motor-inverter')">
                         <h4>POWER PRISM HVD</h4>
-                        <p>3D-printed localized corner sleeve isolating contactors, fuses, and busbars.</p>
+                        <p>3D-printed localized corner sleeve isolating main line high voltage contactors.</p>
                     </div>
-                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                    <div class="anno-card" onclick="focusMechanism(null, 'sub-mounts', '#tractive-battery')">
                         <h4>CHASSIS MOUNTS</h4>
-                        <p>10 structural mounting interfaces anchoring directly into monocoque pucks.</p>
+                        <p>10 structural mounting interfaces anchoring directly into the monocoque pucks.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
-        </main>
+
+        <section id="mechanical" class="binder-section">
+            <div class="section-badge">01 // MECHANICAL DESIGN CONFIGURATION</div>
+            <h1>Structural Documentation</h1>
+            
+            <div class="interactive-tabs-container">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sub-housing')">Enclosure Shell</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sub-baskets')">Internal Matrices</button>
+                </div>
+                <div id="sub-housing" class="tab-content active">
+                    <h4>Aluminum Monocoque Shielding</h4>
+                    <p>The structural containment box utilizes custom laser-cut sheets featuring optimized slot-and-tab configurations to guarantee squareness during assembly tracking.</p>
+                </div>
+                <div id="sub-baskets" class="tab-content">
+                    <h4>PAHT-CF Cell Retention Matrix</h4>
+                    <p>High-temperature Carbon Fiber Nylon internal baskets hold individual cell segments isolated safely from structural impact and friction wear paths.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tractive-battery" class="binder-section">
+            <div class="section-badge">02 // TRACTIVE BATTERY MATRIX</div>
+            <h1>Cell Configuration & Mounts</h1>
+            
+            <div class="interactive-tabs-container">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sub-mounts')">Structural Isolation Mounts</button>
+                </div>
+                <div id="sub-mounts" class="tab-content active">
+                    <h4>Chassis Hardpoint Interfaces</h4>
+                    <p>10 hardpoint mounting positions handle multi-axis energy displacement forces. These spread loading moments safely into reinforced carbon chassis hardpoints.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="motor-inverter" class="binder-section">
+            <div class="section-badge">03 // PROPULSION SYSTEM CORE</div>
+            <h1>Power Distribution</h1>
+            
+            <div class="interactive-tabs-container">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sub-hvd')">Power Prism Isolation</button>
+                </div>
+                <div id="sub-hvd" class="tab-content active">
+                    <h4>High Voltage Disconnect Subsystem</h4>
+                    <p>The localized Power Prism enclosure mechanically isolates safety elements, protecting raw high-amperage lines from transient arcs or housing structural contacts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="software" class="binder-section">
+            <div class="section-badge">04 // EMBEDDED SOFTWARE INFRASTRUCTURE</div>
+            <h1>State and Communication Logic Matrix</h1>
+            <p>Controls code, safety tracking loops, and CAN telemetry formatting channels.</p>
+        </section>
+
+        <section id="testing" class="binder-section">
+            <div class="section-badge">05 // SYSTEM TEST PROCEDURES</div>
+            <h1>Physical Testing Logging Matrix</h1>
+            <p>Verification data sheets, stress limits, and dyno diagnostic runs.</p>
+        </section>
+    </main>
 
     <div class="live-dashboard floating-dash">
         <div class="dash-header">
@@ -148,10 +211,18 @@
         
         // --- 4414 Diagram Interlock Mechanism Engine ---
         function focusMechanism(evt, tabId, sectionId) {
-            // 1. Update hotspot active states
-            document.querySelectorAll('.hotspot-node').forEach(node => node.classList.remove('active'));
+            // 1. Update hotspot active states if direct hotspot bubble clicked
             if (evt && evt.currentTarget) {
+                document.querySelectorAll('.hotspot-node').forEach(node => node.classList.remove('active'));
                 evt.currentTarget.classList.add('active');
+            } else {
+                // If text card was clicked, find corresponding bubble via dataset lookups
+                document.querySelectorAll('.hotspot-node').forEach(node => {
+                    node.classList.remove('active');
+                    if (node.getAttribute('onclick').includes(tabId)) {
+                        node.classList.add('active');
+                    }
+                });
             }
         
             // 2. Safely trigger the underlying document tabs
@@ -164,7 +235,6 @@
                     
                     targetTabContent.classList.add('active');
                     
-                    // Query tabs directly by tracking data-tab or matching index attributes
                     const buttons = container.querySelectorAll('.tab-btn');
                     buttons.forEach(btn => {
                         if (btn.getAttribute('onclick').includes(tabId)) {
