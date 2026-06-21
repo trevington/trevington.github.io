@@ -234,6 +234,20 @@
         
         // Fire up the hardware animation loop frame execution
         requestAnimationFrame(smoothTelemetryLoop);
+
+        // --- Theme Mode Toggle Handler Engine ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
+        
+        themeToggleBtn.addEventListener('click', () => {
+            if (bodyElement.classList.contains('dark-theme')) {
+                bodyElement.classList.remove('dark-theme');
+                bodyElement.classList.add('light-theme');
+            } else {
+                bodyElement.classList.remove('light-theme');
+                bodyElement.classList.add('dark-theme');
+            }
+        });
     </script>
 </body>
 </html>
