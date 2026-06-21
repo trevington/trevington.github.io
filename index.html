@@ -7,122 +7,166 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="theme-font">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>CR-30 EV</h2>
+            <h2>CR-31 EV</h2>
             <p>Powertrain Binder</p>
         </div>
         <ul class="nav-links">
-            <li><a href="#mechanical" class="active">01. System Overview</a></li>
-            <li><a href="#tractive battery">02. Simulation & Modeling</a></li>
-            <li><a href="#motor & inverter">03. Accumulator & Cells</a></li>
-            <li><a href="#software">04. Motor & Inverter</a></li>
-            <li><a href="#testing">05. Testing & Validation</a></li>
+            <li><a href="#mechanical" class="active">01. Mechanical</a></li>
+            <li><a href="#tractive-battery">02. Tractive Battery</a></li>
+            <li><a href="#motor-inverter">03. Motor & Inverter</a></li>
+            <li><a href="#software">04. Software</a></li>
+            <li><a href="#testing">05. Testing</a></li>
         </ul>
     </nav>
 
     <main class="content">
         
-        <section id="tractive battery" class="binder-section">
-            <div class="section-badge">01 // TRACTIVE BATTERY</div>
-            <h1>System Overview</h1>
-            <p class="lead-text">An in-depth technical breakdown of the tractive system architecture, component integration, and performance targets for the current vehicle generation.</p>
-            
-            <div class="spec-grid">
-                <div class="spec-card">
-                    <h3>Peak Power</h3>
-                    <span class="spec-value">80 kW</span>
-                    <span class="spec-label">Regulated Limit</span>
-                </div>
-                <div class="spec-card">
-                    <h3>Pack Voltage</h3>
-                    <span class="spec-value">600V</span>
-                    <span class="spec-label">DC Peak</span>
-                </div>
-                <div class="spec-card">
-                    <h3>Target Mass</h3>
-                    <span class="spec-value">~63.5 kg</span>
-                    <span class="spec-label">Powertrain Total</span>
-                </div>
-            </div>
-        </section>
-
         <section id="mechanical" class="binder-section">
-            <div class="section-badge">02 // MECHANICAL</div>
-            <h1>Simulation & Modeling</h1>
-            <p>To optimize tractive system performance and thermal headroom, custom Python-based multi-variable sweeps are used to sweep battery configurations and evaluate performance over simulated endurance cycles.</p>
+            <div class="section-badge">01 // PACKAGING & STRUCTURAL</div>
+            <h1>Mechanical Design</h1>
+            <p class="lead-text">Physical packaging constraints, structural mounting interfaces, and thermal management integration for the tractive drive unit.</p>
             
-            <div class="code-window">
-                <div class="code-header">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                    <span class="file-name">powertrain_sweep.py</span>
+            <div class="interactive-tabs-container">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="switchTab(event, 'mech-gearbox')">Gearbox / Drive</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'mech-cooling')">Cooling Loop</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'mech-mounts')">Chassis Mounts</button>
                 </div>
-                <pre><code># Multi-cell configuration & mass property optimization
-for config in cell_count_sweep:
-    sim.run_lap_cycle(cell_type, mass_properties)
-    # Outputting Pareto front for energy density vs thermal overhead</code></pre>
+                <div id="mech-gearbox" class="tab-content active">
+                    <h3>Drivetrain Configuration</h3>
+                    <p>Details regarding the reduction ratio selection, differential geometry, and output shafts. Optimized for minimum rotating mass without sacrificing torsional stiffness under transient peak torque spikes.</p>
+                    <div class="spec-grid">
+                        <div class="spec-card"><h3>Ratio</h3><span class="spec-value">X.XX:1</span></div>
+                        <div class="spec-card"><h3>Housing Mass</h3><span class="spec-value">X.X kg</span></div>
+                    </div>
+                </div>
+                <div id="mech-cooling" class="tab-content">
+                    <h3>Thermal Management Geometry</h3>
+                    <p>Cooling jacket fluid dynamics, routing restrictions, and radiator sizing parameters. Cold plate interfaces are explicitly toleranced for maximum surface contact area with continuous grease application.</p>
+                </div>
+                <div id="mech-mounts" class="tab-content">
+                    <h3>Structural Interfaces</h3>
+                    <p>Load paths from the motor casing into the rear chassis subframe structure. Designed to handle extreme cornering g-forces overlaid with maximum tractive drive torque vectors.</p>
+                </div>
             </div>
         </section>
 
-        <section id="accumulator" class="binder-section">
-            <div class="section-badge">03 // TRACTIVE SYSTEM</div>
-            <h1>Accumulator & Cell Selection</h1>
-            <p>Data-driven selection focusing on internal resistance trends, continuous current discharge capabilities, and total pack mass configurations to maintain optimal cell chemistry temperatures.</p>
+        <section id="tractive-battery" class="binder-section">
+            <div class="section-badge">02 // ENERGY STORAGE</div>
+            <h1>Tractive Battery</h1>
+            <p>Cell configuration architecture, busbar design, internal maintenance switches, and accumulator safety parameters.</p>
             
             <table class="tech-table">
                 <thead>
                     <tr>
-                        <th>Cell Type</th>
-                        <th>Capacity (Ah)</th>
-                        <th>Mass (g)</th>
-                        <th>IR (mΩ)</th>
-                        <th>Notes</th>
+                        <th>Parameter</th>
+                        <th>Specification</th>
+                        <th>Status / Validation</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Option A</td>
-                        <td>X.X</td>
-                        <td>XX</td>
-                        <td>XX.X</td>
-                        <td>Baseline benchmark</td>
+                        <td>Configuration</td>
+                        <td>XXXS // XXXP</td>
+                        <td><span class="badge status-green">Locked</span></td>
                     </tr>
                     <tr>
-                        <td>Option B</td>
-                        <td>X.X</td>
-                        <td>XX</td>
-                        <td>XX.X</td>
-                        <td>Evaluated in Pareto front sweep</td>
+                        <td>Peak Capacity</td>
+                        <td>XX.X kWh</td>
+                        <td><span class="badge status-green">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Max Segment Voltage</td>
+                        <td>&lt; 120V DC</td>
+                        <td><span class="badge status-orange">In Review</span></td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
         <section id="motor-inverter" class="binder-section">
-            <div class="section-badge">04 // PROPULSION</div>
-            <h1>Motor & Inverter Integration</h1>
-            <p>Details regarding the core tractive drive unit, focusing on high-throttle torque delivery, high-voltage gate driver configuration, and commutation alignment under maximum load conditions.</p>
+            <div class="section-badge">03 // PROPULSION</div>
+            <h1>Motor & Inverter</h1>
+            <p>Tractive system electronics configuration, resolver alignment targets, and power stage behavior parameters under high continuous currents.</p>
             
             <div class="tech-callout alert">
-                <h4>System Warning / Engineering Note</h4>
-                <p>Ensure precise resolver calibration and commutation alignment to eliminate unexpected high-throttle fault states or commutation failure modes under transient peak current draw.</p>
+                <h4>Hardware Protection Guardrails</h4>
+                <p>Transient over-current levels must lock out gate driver signals instantaneously if hardware limits are exceeded to avoid catastrophic commutation loop collapse.</p>
+            </div>
+        </section>
+
+        <section id="software" class="binder-section">
+            <div class="section-badge">04 // EMBEDDED CONTROLS</div>
+            <h1>Software Architecture</h1>
+            <p>State machine behavior, CAN bus message structures, torque vectoring algorithms, and safety fault-handling loops running on the primary VCU.</p>
+            
+            <div class="code-window">
+                <div class="code-header">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="file-name">tractive_state_machine.cpp</span>
+                </div>
+                <pre><code>void evaluateTractiveStatus() {
+    if (getInverterError() != FAULT_NONE) {
+        setTractiveState(STATE_AIR_OPEN_REQUEST);
+        triggerDashboardAlert(ALERT_CRITICAL);
+    }
+    // High-frequency throttle command loop parsing
+}</code></pre>
             </div>
         </section>
 
         <section id="testing" class="binder-section">
-            <div class="section-badge">05 // VALIDATION</div>
-            <h1>Testing & Validation</h1>
-            <p>Physical dyno logs and track testing telemetry are mapped directly against our simulator baselines to refine thermal coefficients and transient efficiency maps.</p>
+            <div class="section-badge">05 // TELEMETRY & VALIDATION</div>
+            <h1>Testing & Hardware Validation</h1>
+            <p>Physical trace verification logs, dyno runs, and trackside telemetry processing loops used to validate true powertrain system efficiency.</p>
+
+            <div class="telemetry-widget">
+                <div class="widget-header">
+                    <span>Live Hardware Telemetry Stream</span>
+                    <span class="pulse-indicator"></span>
+                </div>
+                <div class="widget-grid">
+                    <div class="metric-box">
+                        <label>DC Bus Voltage</label>
+                        <div class="value" id="tel-voltage">384.2 V</div>
+                    </div>
+                    <div class="metric-box">
+                        <label>Inverter Temp</label>
+                        <div class="value" id="tel-temp">54.1 °C</div>
+                    </div>
+                    <div class="metric-box">
+                        <label>Motor RPM</label>
+                        <div class="value" id="tel-rpm">4500 RPM</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </main>
 
     <script>
-        // Simple Scrollspy to highlight active sidebar item
+        // Tab Switcher Logic
+        function switchTab(evt, tabId) {
+            const container = evt.currentTarget.closest('.interactive-tabs-container');
+            
+            container.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            container.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Scrollspy for Side Nav Highlight
         const sections = document.querySelectorAll('.binder-section');
         const navLi = document.querySelectorAll('.nav-links li a');
         window.addEventListener('scroll', () => {
@@ -140,6 +184,17 @@ for config in cell_count_sweep:
                 }
             });
         });
+
+        // Interactive Telemetry Mock Data Generator
+        setInterval(() => {
+            const volt = (380 + Math.random() * 8).toFixed(1);
+            const temp = (52 + Math.random() * 4).toFixed(1);
+            const rpm = Math.floor(4000 + Math.random() * 1200);
+            
+            document.getElementById('tel-voltage').innerText = `${volt} V`;
+            document.getElementById('tel-temp').innerText = `${temp} °C`;
+            document.getElementById('tel-rpm').innerText = `${rpm} RPM`;
+        }, 1200);
     </script>
 </body>
 </html>
