@@ -13,22 +13,22 @@
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>CR-31 EV</h2>
+            <h2>CR-30 EV</h2>
             <p>Powertrain Binder</p>
         </div>
         <ul class="nav-links">
-            <li><a href="#overview" class="active">01. System Overview</a></li>
-            <li><a href="#simulation">02. Simulation & Modeling</a></li>
-            <li><a href="#accumulator">03. Accumulator & Cells</a></li>
-            <li><a href="#motor-inverter">04. Motor & Inverter</a></li>
+            <li><a href="#mechanical" class="active">01. System Overview</a></li>
+            <li><a href="#tractive battery">02. Simulation & Modeling</a></li>
+            <li><a href="#motor & inverter">03. Accumulator & Cells</a></li>
+            <li><a href="#software">04. Motor & Inverter</a></li>
             <li><a href="#testing">05. Testing & Validation</a></li>
         </ul>
     </nav>
 
     <main class="content">
         
-        <section id="overview" class="binder-section">
-            <div class="section-badge">01 // ARCHITECTURE</div>
+        <section id="tractive battery" class="binder-section">
+            <div class="section-badge">01 // TRACTIVE BATTERY</div>
             <h1>System Overview</h1>
             <p class="lead-text">An in-depth technical breakdown of the tractive system architecture, component integration, and performance targets for the current vehicle generation.</p>
             
@@ -39,20 +39,20 @@
                     <span class="spec-label">Regulated Limit</span>
                 </div>
                 <div class="spec-card">
-                    <h3>Max Bus Voltage</h3>
-                    <span class="spec-value">~400V</span>
+                    <h3>Pack Voltage</h3>
+                    <span class="spec-value">600V</span>
                     <span class="spec-label">DC Peak</span>
                 </div>
                 <div class="spec-card">
                     <h3>Target Mass</h3>
-                    <span class="spec-value">XX kg</span>
+                    <span class="spec-value">~63.5 kg</span>
                     <span class="spec-label">Powertrain Total</span>
                 </div>
             </div>
         </section>
 
-        <section id="simulation" class="binder-section">
-            <div class="section-badge">02 // LAP SIMULATION</div>
+        <section id="mechanical" class="binder-section">
+            <div class="section-badge">02 // MECHANICAL</div>
             <h1>Simulation & Modeling</h1>
             <p>To optimize tractive system performance and thermal headroom, custom Python-based multi-variable sweeps are used to sweep battery configurations and evaluate performance over simulated endurance cycles.</p>
             
