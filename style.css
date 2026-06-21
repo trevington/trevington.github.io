@@ -102,10 +102,8 @@ body {
     padding: 0.6rem 0.8rem;
     border-radius: 4px 4px 0 0;
     transition: all 0.2s ease;
-    border-bottom: 2px solid transparent; 
 }
 
-/* Red over Grey Solid Layered Active/Hover Underline Interaction */
 .topbar .nav-links a:hover, .topbar .nav-links a.active {
     color: var(--text-main);
     background-color: var(--bg-card);
@@ -166,7 +164,6 @@ body {
     border-radius: 10px;
     padding: 0.75rem 1.25rem;
     z-index: 2000;
-    margin-top: 0;
     transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
@@ -206,7 +203,6 @@ body {
 }
 
 .floating-dash .dash-card label {
-    margin-bottom: 0;
     font-size: 0.7rem;
     text-transform: uppercase;
     font-family: 'JetBrains Mono', monospace;
@@ -226,7 +222,7 @@ body {
 
 .content {
     margin-top: 70px;
-    padding: 4rem 4rem 10rem 4rem; 
+    padding: 4rem 4rem 12rem 4rem; 
     max-width: 1200px;
     width: 100%;
     margin-left: auto;
@@ -240,7 +236,7 @@ body {
     padding-bottom: 4rem;
 }
 
-/* --- 4414 HighTide Workspace Layout (Fixed) --- */
+/* --- Interactive Workspace Layout (Fixed Constraints) --- */
 .interactive-diagram-container {
     position: relative;
     width: 100%;
@@ -252,7 +248,6 @@ body {
     justify-content: space-between;
     margin: 2rem 0;
     padding: 2rem;
-    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -260,19 +255,24 @@ body {
     position: relative; 
     width: 50%;
     max-width: 550px;
-    height: auto;
+    max-height: 50vh; /* Forces ultra-wide 16:9 black box frames down clean */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 5;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .diagram-base-img {
     width: 100%;
     max-width: 100%; 
     height: auto;
+    object-fit: contain;
     display: block;
 }
 
-/* Pulsing Hotspot Targets */
+/* Pulsing Hotspot Alignment Nodes */
 .hotspot-node {
     position: absolute;
     width: 16px;
@@ -340,7 +340,7 @@ body {
 .anno-card:hover h4 { color: var(--accent-color); }
 .anno-card:hover { transform: translateX(4px); }
 
-/* --- Subsection Tabs & Explanations Layout --- */
+/* --- Subsection Tabs Infrastructure --- */
 .interactive-tabs-container {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -375,6 +375,27 @@ body {
 .tab-content { display: none; padding: 2rem; }
 .tab-content.active { display: block; }
 
+.tech-callout {
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.tech-callout h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.tech-callout p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
 .section-badge {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
@@ -389,7 +410,7 @@ h1 { font-size: 2.4rem; font-weight: 800; color: var(--text-main); margin-bottom
     .topbar { padding: 0 1.5rem; }
     .topbar .nav-links { display: none; } 
     .interactive-diagram-container { flex-direction: column; gap: 2rem; }
-    .diagram-viewport { width: 90%; }
+    .diagram-viewport { width: 100%; max-height: none; }
     .annotation-layout { width: 100%; }
     .floating-dash .dash-grid { grid-template-columns: 1fr; gap: 0.5rem; }
 }
