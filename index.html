@@ -272,35 +272,6 @@
                 }
             });
         });
-        
-        
-// --- Interactive Tab Switcher ---
-function switchTab(evt, tabId) {
-    const container = evt.currentTarget.closest('.interactive-tabs-container');
-    container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-    container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
-
-// --- Topbar Scrollspy Activation ---
-const sections = document.querySelectorAll('.binder-section');
-const navLi = document.querySelectorAll('.nav-links li a');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 160) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLi.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').includes(current)) {
-            a.classList.add('active');
-        }
-    });
-});
 
 
         // --- Dynamic Live Telemetry Simulation Systems ---
