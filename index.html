@@ -37,16 +37,43 @@
     <main class="content">
 
         <section id="overview" class="binder-section">
-            <div class="overview-header">
-                <div class="overview-text">
-                    <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
-                    <h1>CR30 Tractive Battery</h1>
-                    <p class="lead-text">Cyclone Racing's second-generation tractive battery pack, engineering structural architectures, and the team's first electric powertrain to drive under its own power.</p>
-                    <p>This technical binder indexes the complete mechanical, electrical, and structural engineering documentation for the CR30 tractive system, alongside active testing diagnostics and hardware retrofits.</p>
+            <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
+            <h1>Cyclone Racing CR30 Accumulator</h1>
+            <p class="lead-text">Click on any system hotspot node below to isolate its mechanical, electrical, or structural documentation matrix.</p>
+
+            <div class="interactive-diagram-container">
+                
+                <div class="diagram-viewport">
+                    <img src="TB-001-CR30_Render_1.jpg" alt="CR30 Accumulator Assembly Render" class="diagram-base-img">
+                    
+                    <button class="hotspot-node active" style="top: 25%; left: 45%;" onclick="focusMechanism(event, 'mech-housing', '#mechanical')" data-label="Housing"></button>
+                    <button class="hotspot-node" style="top: 45%; left: 30%;" onclick="focusMechanism(event, 'mech-baskets', '#mechanical')" data-label="Baskets"></button>
+                    <button class="hotspot-node" style="top: 75%; left: 80%;" onclick="focusMechanism(event, 'mech-mounts', '#mechanical')" data-label="Mounts"></button>
+                    <button class="hotspot-node" style="top: 35%; left: 60%;" onclick="focusMechanism(event, 'prop-hvd', '#motor-inverter')" data-label="Power Prism"></button>
                 </div>
-                <div class="overview-image-container">
-                    <img src="TB-001-CR30_Render_1.png" alt="CR30 Accumulator Assembly Render" class="render-img">
+
+                <div class="annotation-layout left-anno">
+                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                        <h4>ALUMINUM HOUSING</h4>
+                        <p>Self-jigging slot & tab waterjet seams to prevent raw panel distortion.</p>
+                    </div>
+                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                        <h4>MODULE BASKETS</h4>
+                        <p>PAHT-CF carbon-fiber nylon holding 28 pouch cells in a rigid cell matrix.</p>
+                    </div>
                 </div>
+
+                <div class="annotation-layout right-anno">
+                    <div class="anno-card" onclick="scrollToId('#motor-inverter')">
+                        <h4>POWER PRISM HVD</h4>
+                        <p>3D-printed localized corner sleeve isolating contactors, fuses, and busbars.</p>
+                    </div>
+                    <div class="anno-card" onclick="scrollToId('#mechanical')">
+                        <h4>CHASSIS MOUNTS</h4>
+                        <p>10 structural mounting interfaces anchoring directly into monocoque pucks.</p>
+                    </div>
+                </div>
+
             </div>
 
             <div class="live-dashboard">
