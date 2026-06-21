@@ -9,43 +9,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        }
-      };
+      window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body>
-
-    <nav class="topbar">
-        <div class="topbar-brand">
-            <h2>CR30 EV</h2>
-            <p>// Powertrain Binder</p>
+<body class="dark-theme"> <nav class="topbar">
+        <div class="topbar-left">
+            <div class="topbar-brand">
+                <h2>CR30 EV</h2>
+                <p>// Powertrain Binder</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#mechanical">Mechanical</a></li>
+                <li><a href="#tractive-battery">Battery</a></li>
+                <li><a href="#motor-inverter">Propulsion</a></li>
+                <li><a href="#software">Software</a></li>
+                <li><a href="#testing">Testing</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#overview" class="active">Overview</a></li>
-            <li><a href="#mechanical">Mechanical</a></li>
-            <li><a href="#tractive-battery">Battery</a></li>
-            <li><a href="#motor-inverter">Propulsion</a></li>
-            <li><a href="#software">Software</a></li>
-            <li><a href="#testing">Testing</a></li>
-        </ul>
+        
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Interface Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
     </nav>
 
     <main class="content">
-
         <section id="overview" class="binder-section">
             <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
             <h1>Cyclone Racing CR30 Accumulator</h1>
             <p class="lead-text">Click on any system hotspot node below to isolate its mechanical, electrical, or structural documentation matrix.</p>
 
             <div class="interactive-diagram-container">
-                
                 <div class="diagram-viewport">
                     <img src="TB-001-CR30_Render_1.jpg" alt="CR30 Accumulator Assembly Render" class="diagram-base-img">
-                    
                     <button class="hotspot-node active" style="top: 25%; left: 45%;" onclick="focusMechanism(event, 'mech-housing', '#mechanical')" data-label="Housing"></button>
                     <button class="hotspot-node" style="top: 45%; left: 30%;" onclick="focusMechanism(event, 'mech-baskets', '#mechanical')" data-label="Baskets"></button>
                     <button class="hotspot-node" style="top: 75%; left: 80%;" onclick="focusMechanism(event, 'mech-mounts', '#mechanical')" data-label="Mounts"></button>
@@ -73,203 +71,33 @@
                         <p>10 structural mounting interfaces anchoring directly into monocoque pucks.</p>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="live-dashboard">
-                <div class="dash-header">
-                    <span>LIVE BUS TELEMETRY STREAM</span>
-                    <span class="pulse-indicator"></span>
-                </div>
-                <div class="dash-grid">
-                    <div class="dash-card">
-                        <label>Pack Voltage</label>
-                        <div class="value" id="dash-voltage">596.4 V</div>
-                        <span class="label-sub">Tractive Rail Bus</span>
-                    </div>
-                    <div class="dash-card">
-                        <label>Motor Velocity</label>
-                        <div class="value" id="dash-rpm">0 RPM</div>
-                        <span class="label-sub">Axial Flux Core</span>
-                    </div>
-                    <div class="dash-card">
-                        <label>Current Draw</label>
-                        <div class="value" id="dash-current">0.0 A</div>
-                        <span class="label-sub">Continuous Load</span>
-                    </div>
-                </div>
             </div>
         </section>
         
-        <section id="mechanical" class="binder-section">
-            <div class="section-badge">01 // PACKAGING & STRUCTURAL</div>
-            <h1>Mechanical Design</h1>
-            <p class="lead-text">Physical packaging structures, self-jigging enclosures, structural chassis interfaces, and cell basket manufacturing tolerances.</p>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'mech-housing')">Aluminum Housing</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'mech-baskets')">Module Baskets</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'mech-mounts')">Chassis Mounts</button>
-                </div>
-                <div id="mech-housing" class="tab-content active">
-                    <h3>Self-Jigging Enclosure Assembly</h3>
-                    <p>To eliminate the complex external clamping setups that caused severe panel warping during the CR29 build, the CR30 welded aluminum enclosure utilizes waterjet-cut slot and tab features integrated directly along the panel seams. Internal walls feature precision slots that receive matching tabs on external panels, locking the raw structural sheets square for immediate tack-welding without external fixtures.</p>
-                    <div class="tech-callout alert">
-                        <h4>Manufacturing Retrospective</h4>
-                        <p>Corner pieces were omitted from the self-jigging pattern. Post-weld distortion pulled one corner visibly inward, compressing the available volume for the high-voltage distribution layout and requiring an emergency tight-tolerance redesign of the Power Prism sleeve component.</p>
-                    </div>
-                </div>
-                <div id="mech-baskets" class="tab-content">
-                    <h3>PAHT-CF High-Temperature Cell Enclosures</h3>
-                    <p>Each of the 5 module baskets is a structural 3D-printed shell holding 28 pouch cells in a rigid matrix. Transitioning away from brittle polycarbonate, <strong>PAHT-CF (High-Temperature Carbon Fiber Nylon)</strong> was selected for its superior impact resistance during localized destruction testing. Structural retention features include an open-face close-out plate that sandwiches the cell group, and dedicated lifting provisions designed to drop directly into the integrated vertical retention stack holes for quick-extraction modular servicing.</p>
-                    <div class="spec-grid">
-                        <div class="spec-card"><h3>Material</h3><span class="spec-value">PAHT-CF</span></div>
-                        <div class="spec-card"><h3>Z-Scale Comp</h3><span class="spec-value">+1.25%</span></div>
-                    </div>
-                </div>
-                <div id="mech-mounts" class="tab-content">
-                    <h3>Structural Monocoque Interfaces</h3>
-                    <p>The entire accumulator system mechanical load transfers to the vehicle monocoque through 10 bolted points (4 rear, 6 front). Fasteners anchor directly into pre-preg composite inserts (pucks) positioned inside the carbon laminate prior to autoclaving. To secure physical structural equivalency certification (SES) after manufacturing deviations, mechanical shims and ground aluminum block spacers were integrated to bridge a step height discrepancy caused by proud front puck surfaces.</p>
-                </div>
+        </main>
+
+    <div class="live-dashboard floating-dash">
+        <div class="dash-header">
+            <span>LIVE BUS TELEMETRY STREAM</span>
+            <div class="dash-status-group">
+                <span class="pulse-indicator"></span>
             </div>
-        </section>
-
-        <section id="tractive-battery" class="binder-section">
-            <div class="section-badge">02 // ENERGY STORAGE</div>
-            <h1>Tractive Battery</h1>
-            <p>High-voltage battery configuration metrics, internal cell models, custom cantilever clamping systems, and physical mass tracking.</p>
-            
-            <div class="spec-grid">
-                <div class="spec-card">
-                    <h3>Total Pack Configuration</h3>
-                    <span class="spec-value">140s 1p</span>
-                    <span class="spec-label">28S Modules × 5 in Series</span>
-                </div>
-                <div class="spec-card">
-                    <h3>Nominal Potential</h3>
-                    <span class="spec-value">600V</span>
-                    <span class="spec-label">DC Rail Bus Voltage</span>
-                </div>
-                <div class="spec-card">
-                    <h3>Total Mass</h3>
-                    <span class="spec-value">~140 lbs</span>
-                    <span class="spec-label">Fully Assembled Weight</span>
-                </div>
+        </div>
+        <div class="dash-grid">
+            <div class="dash-card">
+                <label>Pack Voltage</label>
+                <div class="value" id="dash-voltage">600.0 V</div>
             </div>
-
-            <table class="tech-table">
-                <thead>
-                    <tr>
-                        <th>Parameter Sub-assembly</th>
-                        <th>Design Specification</th>
-                        <th>Validation & Engineering Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Cell Model Selection</strong></td>
-                        <td>COSMX CA95B0D0HD Pouch Cells</td>
-                        <td><span class="badge status-green">Locked Architecture</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tab Interconnect Method</strong></td>
-                        <td>Cantilever Clamping Tab Blocks</td>
-                        <td><span class="badge status-orange">Unvalidated IR</span> Halves CR29 fastener counts.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tab Block Material</strong></td>
-                        <td>6061 Aluminum Block Stock</td>
-                        <td>Lightweight, stiff, doubles as a thermal dissipation path.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nut Pocket Interface</strong></td>
-                        <td>0.05 mm Interference Fit in PETG Plates</td>
-                        <td>Locks nuts square; tool preload values restricted by pocket deformation.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="motor-inverter" class="binder-section">
-            <div class="section-badge">03 // PROPULSION & DISTRO</div>
-            <h1>Motor & Inverter</h1>
-            <p>Tractive drive units, corner high-voltage distribution components, and specialized ampacity busbar conductor calculations.</p>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'prop-hvd')">The Power Prism HVD</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'prop-busbars')">Busbar Ampacity Math</button>
-                </div>
-                <div id="prop-hvd" class="tab-content active">
-                    <h3>Corner HV Distribution Sleeve</h3>
-                    <p>Departing from bulky, long Coroflex high-voltage cable runs, CR30 consolidates primary tractive components into a tight structural 3D-printed sleeve isolated in the corner of the pack. This single localized unit packages the main air contactors, the principal system fuse, and the hardline interconnect distribution busbars.</p>
-                </div>
-                <div id="prop-busbars" class="tab-content">
-                    <h3>Transient Thermal Evaluation ($\frac{\rho \cdot L}{A}$)</h3>
-                    <p>Standard static ampacity tables are highly conservative for competition cars that only draw maximum current during brief acceleration states. Conductor geometries were downsized significantly by evaluating heat generation using transient thermodynamic resistance equations matched directly against endurance-duration ambient convection values.</p>
-                </div>
+            <div class="dash-card">
+                <label>Motor Velocity</label>
+                <div class="value" id="dash-rpm">0 RPM</div>
             </div>
-        </section>
-
-        <section id="software" class="binder-section">
-            <div class="section-badge">04 // EMBEDDED CONTROLS</div>
-            <h1>Software Architecture</h1>
-            <p>Vehicle control code parameters, Orion BMS firmware settings, safety loop faults, and inverter configuration parameters.</p>
-            
-            <div class="code-window">
-                <div class="code-header">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                    <span class="file-name">inverter_motor_direction_config.json</span>
-                </div>
-                <pre><code>{
-    "inverter_parameters": {
-        "commutation_direction_inverted": true,
-        "comment": "Fixes 1:00 AM wheel-spin inversion bug discovered during initial stand testing",
-        "apps_potentiometer_sync_rate_ms": 10,
-        "spurious_fault_auto_reset_timeout_ms": 1000
-    }
-}</code></pre>
+            <div class="dash-card">
+                <label>Current Draw</label>
+                <div class="value" id="dash-current">0.0 A</div>
             </div>
-
-            <div class="tech-callout alert">
-                <h4>Orion BMS Commissioning Safe-State</h4>
-                <p>Ensure that phantom auxiliary relay configuration flags are explicitly checked in software. The first power-on sequences threw non-existent open-relay flags, which stalled tractive loop verification until firmware parameter cleanup removed the diagnostic requirement.</p>
-            </div>
-        </section>
-
-        <section id="testing" class="binder-section">
-            <div class="section-badge">05 // TELEMETRY & HARDWARE RESCUE</div>
-            <h1>Testing & Hardware Validation</h1>
-            <p>Physical trace troubleshooting, first-drive performance summaries, and trackside live cell state tracking.</p>
-
-            <div class="telemetry-widget">
-                <div class="widget-header">
-                    <span>First Drive Trackside Snapshot (40 kW Limited Run)</span>
-                </div>
-                <div class="widget-grid">
-                    <div class="metric-box">
-                        <label>Normal Cell Baseline</label>
-                        <div class="value">3.56 V</div>
-                    </div>
-                    <div class="metric-box">
-                        <label>Mismatched Cell 13 (Low SoC)</label>
-                        <div class="value" style="color: var(--accent-alert);">3.29 V</div>
-                    </div>
-                    <div class="metric-box">
-                        <label>Tractive Cap</label>
-                        <div class="value">40 kW</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tech-callout">
-                <h4>BMB Stiffness & Pogo Pin Rescue Protocol</h4>
-                <p>The raw, unsupported center span of the 5 internal Battery Management Boards warped downward under the internal spring loading of the cell sense pogo pins, severing electrical continuity. The solution deployed was a mechanical retention stack retrofit assembly—combining a steel rod, a custom plastic insulator profile, and a horizontal stiffener component to pull the board structural plane back into a flush, flat orientation.</p>
-            </div>
-        </section>
-
-    </main>
+        </div>
+    </div>
 
     <script>
         // --- Interactive Tab Switcher ---
