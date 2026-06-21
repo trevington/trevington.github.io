@@ -61,6 +61,7 @@
                     <button class="hotspot-node" style="top: 55%; left: 56%;" onclick="focusMechanism(event, 'sub-baskets', '#mechanical')" data-label="Module Baskets"></button>
                     <button class="hotspot-node" style="top: 68%; left: 68%;" onclick="focusMechanism(event, 'sub-mounts', '#tractive-battery')" data-label="Chassis Mounts"></button>
                     <button class="hotspot-node" style="top: 52%; left: 32%;" onclick="focusMechanism(event, 'sub-hvd', '#motor-inverter')" data-label="Power Prism HVD"></button>
+                    <button class="hotspot-node" style="top: 42%; left: 49%;" onclick="focusMechanism(event, 'cooling', '#cooling')" data-label="Cooling System"></button>
                 </div>
 
                 <div class="annotation-layout">
@@ -95,7 +96,7 @@
                 </div>
             </div>
         </section>
-
+        
         <section id="tractive-battery" class="binder-section">
             <div class="section-badge">02 // TRACTIVE BATTERY MATRIX</div>
             <h1>Cell Configuration & Mounts</h1>
@@ -143,6 +144,26 @@
             <div class="tech-callout">
                 <h4>Isolation Verification Testing</h4>
                 <p>All structural sub-baskets undergo isolation breakdown testing up to 1000V DC prior to active pack integration steps.</p>
+            </div>
+        </section>
+
+        <section id="cooling" class="binder-section">
+            <div class="section-badge">06 // COOLING SYSTEM DESIGN</div>
+            <h1>Cooling Documentation</h1>
+            
+            <div class="interactive-tabs-container">
+                <div class="tab-headers">
+                    <button class="tab-btn active" onclick="switchTab(event, 'louvers')">Ventilation</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'fans')">Fans</button>
+                </div>
+                <div id="Cooling Loop" class="tab-content active">
+                    <h4>Cooling Loop</h4>
+                    <p>We use fans n stuff</p>
+                </div>
+                <div id="3D Printed Louvers" class="tab-content">
+                    <h4>Louver Design</h4>
+                    <p>Oooouuurrrr</p>
+                </div>
             </div>
         </section>
     </main>
