@@ -353,18 +353,24 @@
         
         // 4. Smooth Damping Animation Loop (60Hz Refresh Frame)
         function smoothTelemetryLoop() {
-            // Linear interpolation decay tracking for RPM (snaps down smoothly when scrolling breaks)
+            // Linear interpolation decay tracking for RPM
             currentRPM += (targetRPM - currentRPM) * 0.1;
             if (currentRPM < 1) currentRPM = 0;
             rpmElement.innerText = `${Math.floor(currentRPM)} RPM`;
             
-            // Constant friction decaying the targets down to zero over time
             targetRPM *= 0.92; 
             
             // Linear interpolation decay tracking for Amperage load lines
             currentAmpDraw += (targetCurrent - currentAmpDraw) * 0.15;
             if (currentAmpDraw < 0.1) currentAmpDraw = 0;
             currentElement.innerText = `${currentAmpDraw.toFixed(1)} A`;
+            
+            // Dynamic Over-Current Visual Alarm
+            if (currentAmpDraw > 200.0) {
+                currentElement.classList.add('over-current');
+            } else {
+                currentElement.classList.remove('over-current');
+            }
             
             targetCurrent *= 0.85;
         
