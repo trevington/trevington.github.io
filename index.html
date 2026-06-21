@@ -245,7 +245,7 @@
     </main>
 
     <script>
-        // Tab Switcher
+        // --- Interactive Tab Switcher ---
         function switchTab(evt, tabId) {
             const container = evt.currentTarget.closest('.interactive-tabs-container');
             container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -253,15 +253,15 @@
             document.getElementById(tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
-
-        // Topbar Scrollspy
+        
+        // --- Topbar Scrollspy Activation ---
         const sections = document.querySelectorAll('.binder-section');
         const navLi = document.querySelectorAll('.nav-links li a');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 160) {
+                if (window.pageYOffset >= sectionTop - 160) {
                     current = section.getAttribute('id');
                 }
             });
@@ -272,18 +272,107 @@
                 }
             });
         });
-
-        // Dynamic Global Dashboard Simulation
+        
+        
+        // --- Dynamic Live Telemetry Simulation Systems ---
+        
+        // 1. Voltage Degradation Model (Base: 600V, drops 0.4V - 1.0V per second)
+        let currentVoltage = 600.0;
+        const voltElement = document.getElementById('dash-voltage');
+        
         setInterval(() => {
-            // Simulated full load cycles
-            const volt = (585 + Math.random() * 15).toFixed(1);
-            const current = (25 + Math.random() * 140).toFixed(1);
-            const rpm = Math.floor(2500 + Math.random() * 3200);
-            
-            document.getElementById('dash-voltage').innerText = `${volt} V`;
-            document.getElementById('dash-current').innerText = `${current} A`;
-            document.getElementById('dash-rpm').innerText = `${rpm} RPM`;
+            if (currentVoltage > 0) {
+                // Calculate a random step loss between 0.4 and 1.0
+                const voltageLoss = 0.4 + (Math.random() * 0.6);
+                currentVoltage -= voltageLoss;
+                
+                // Clamp to absolute zero if it drains fully
+                if (currentVoltage < 0) currentVoltage = 0;
+                
+                voltElement.innerText = `${currentVoltage.toFixed(1)} V`;
+            }
         }, 1000);
+        
+        
+        // 2. Motor RPM Derived From Scroll Velocity
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let lastScrollTime = Date.now();
+        let targetRPM = 0;
+        let currentRPM = 0;
+        const rpmElement = document.getElementById('dash-rpm');
+        
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            const deltaY = Math.abs(currentScrollTop - lastScrollTop);
+            const deltaTime = now - lastScrollTime;
+            
+            if (deltaTime > 0) {
+                // Calculate pixels scrolled per millisecond
+                const speed = deltaY / deltaTime;
+                
+                // Map scroll velocity directly to motor limits (e.g., maxing out around 5500 RPM)
+                targetRPM = Math.min(Math.floor(speed * 1500), 5500);
+            }
+            
+            lastScrollTop = currentScrollTop;
+            lastScrollTime = now;
+        });
+        
+        
+        // 3. Current Draw (Amperage) Derived From Mouse Pointer Speed
+        let lastMouseX = null;
+        let lastMouseY = null;
+        let lastMouseTime = Date.now();
+        let targetCurrent = 0.0;
+        let currentAmpDraw = 0.0;
+        const currentElement = document.getElementById('dash-current');
+        
+        window.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            const deltaTime = now - lastMouseTime;
+            
+            if (lastMouseX !== null && deltaTime > 0) {
+                const deltaX = e.clientX - lastMouseX;
+                const deltaY = e.clientY - lastMouseY;
+                
+                // Calculate linear pixel displacement distance
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const mouseSpeed = distance / deltaTime;
+                
+                // Map mouse speed directly to system draw metrics (up to 240.0 Amps)
+                targetCurrent = Math.min((mouseSpeed * 80), 240.0);
+            }
+            
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+            lastMouseTime = now;
+        });
+        
+        
+        // 4. Smooth Damping Animation Loop (60Hz Refresh Frame)
+        function smoothTelemetryLoop() {
+            // Linear interpolation decay tracking for RPM (snaps down smoothly when scrolling breaks)
+            currentRPM += (targetRPM - currentRPM) * 0.1;
+            if (currentRPM < 1) currentRPM = 0;
+            rpmElement.innerText = `${Math.floor(currentRPM)} RPM`;
+            
+            // Constant friction decaying the targets down to zero over time
+            targetRPM *= 0.92; 
+            
+            // Linear interpolation decay tracking for Amperage load lines
+            currentAmpDraw += (targetCurrent - currentAmpDraw) * 0.15;
+            if (currentAmpDraw < 0.1) currentAmpDraw = 0;
+            currentElement.innerText = `${currentAmpDraw.toFixed(1)} A`;
+            
+            targetCurrent *= 0.85;
+        
+            requestAnimationFrame(smoothTelemetryLoop);
+        }
+        
+        // Fire up the hardware animation loop frame execution
+        requestAnimationFrame(smoothTelemetryLoop);
     </script>
 </body>
 </html>
