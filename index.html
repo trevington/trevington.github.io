@@ -103,9 +103,13 @@
         // --- Interactive Tab Switcher ---
         function switchTab(evt, tabId) {
             const container = evt.currentTarget.closest('.interactive-tabs-container');
+            if (!container) return;
+            
             container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+            
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) targetContent.classList.add('active');
             evt.currentTarget.classList.add('active');
         }
         
@@ -127,25 +131,75 @@
                 }
             });
         });
-
-
-        // --- Dynamic Live Telemetry Simulation Systems ---
         
-        // 1. Capacity Degradation Model (Tracks base open-circuit voltage minus deep drain over time)
+        // --- Theme Mode Toggle Handler Engine ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
+        
+        themeToggleBtn.addEventListener('click', () => {
+            if (bodyElement.classList.contains('dark-theme')) {
+                bodyElement.classList.remove('dark-theme');
+                bodyElement.classList.add('light-theme');
+            } else {
+                bodyElement.classList.remove('light-theme');
+                bodyElement.classList.add('dark-theme');
+            }
+        });
+        
+        // --- 4414 Diagram Interlock Mechanism Engine ---
+        function focusMechanism(evt, tabId, sectionId) {
+            // 1. Update hotspot active states
+            document.querySelectorAll('.hotspot-node').forEach(node => node.classList.remove('active'));
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            }
+        
+            // 2. Safely trigger the underlying document tabs
+            const targetTabContent = document.getElementById(tabId);
+            if (targetTabContent) {
+                const container = targetTabContent.closest('.interactive-tabs-container');
+                if (container) {
+                    container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    
+                    targetTabContent.classList.add('active');
+                    
+                    // Query tabs directly by tracking data-tab or matching index attributes
+                    const buttons = container.querySelectorAll('.tab-btn');
+                    buttons.forEach(btn => {
+                        if (btn.getAttribute('onclick').includes(tabId)) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            }
+        
+            // 3. Smooth scroll focus to destination hardware matrix
+            scrollToId(sectionId);
+        }
+        
+        function scrollToId(elementId) {
+            const targetElement = document.querySelector(elementId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 90,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // --- Dynamic Live Telemetry Simulation Systems ---
         let baseOCV = 600.0; 
         const voltElement = document.getElementById('dash-voltage');
         
         setInterval(() => {
             if (baseOCV > 0) {
-                // Continuous capacity drain (0.4V to 1.0V per second spent on site)
                 const capacityLoss = 0.4 + (Math.random() * 0.6);
                 baseOCV -= capacityLoss;
                 if (baseOCV < 0) baseOCV = 0;
             }
         }, 1000);
         
-        
-        // 2. Motor RPM Derived From Scroll Velocity
         let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         let lastScrollTime = Date.now();
         let targetRPM = 0;
@@ -155,7 +209,6 @@
         window.addEventListener('scroll', () => {
             const now = Date.now();
             const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
             const deltaY = Math.abs(currentScrollTop - lastScrollTop);
             const deltaTime = now - lastScrollTime;
             
@@ -163,13 +216,10 @@
                 const speed = deltaY / deltaTime;
                 targetRPM = Math.min(Math.floor(speed * 1500), 5500);
             }
-            
             lastScrollTop = currentScrollTop;
             lastScrollTime = now;
         });
         
-        
-        // 3. Current Draw (Amperage) Derived From Mouse Pointer Speed
         let lastMouseX = null;
         let lastMouseY = null;
         let lastMouseTime = Date.now();
@@ -184,33 +234,26 @@
             if (lastMouseX !== null && deltaTime > 0) {
                 const deltaX = e.clientX - lastMouseX;
                 const deltaY = e.clientY - lastMouseY;
-                
                 const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
                 const mouseSpeed = distance / deltaTime;
                 
                 targetCurrent = Math.min((mouseSpeed * 80), 240.0);
             }
-            
             lastMouseX = e.clientX;
             lastMouseY = e.clientY;
             lastMouseTime = now;
         });
         
-        
-        // 4. Smooth Damping Animation Loop (60Hz Refresh Frame)
         function smoothTelemetryLoop() {
-            // Linear interpolation decay tracking for RPM
             currentRPM += (targetRPM - currentRPM) * 0.1;
             if (currentRPM < 1) currentRPM = 0;
             rpmElement.innerText = `${Math.floor(currentRPM)} RPM`;
             targetRPM *= 0.92; 
             
-            // Linear interpolation decay tracking for Amperage load lines
             currentAmpDraw += (targetCurrent - currentAmpDraw) * 0.15;
             if (currentAmpDraw < 0.1) currentAmpDraw = 0;
             currentElement.innerText = `${currentAmpDraw.toFixed(1)} A`;
             
-            // Dynamic Over-Current Visual Alarm
             if (currentAmpDraw > 200.0) {
                 currentElement.classList.add('over-current');
             } else {
@@ -218,12 +261,8 @@
             }
             targetCurrent *= 0.85;
         
-            // --- Dynamic Voltage Sag Calculation ---
-            // Simulating an estimated internal pack resistance. Max load of 240A drops terminal voltage by ~45V.
             const internalResistanceFactor = 0.1875; 
             const voltageSag = currentAmpDraw * internalResistanceFactor;
-            
-            // Terminal Voltage = Open Circuit Voltage minus instant transient sag load drop
             let terminalVoltage = baseOCV - voltageSag;
             if (terminalVoltage < 0) terminalVoltage = 0;
             
@@ -231,23 +270,7 @@
         
             requestAnimationFrame(smoothTelemetryLoop);
         }
-        
-        // Fire up the hardware animation loop frame execution
         requestAnimationFrame(smoothTelemetryLoop);
-
-        // --- Theme Mode Toggle Handler Engine ---
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const bodyElement = document.body;
-        
-        themeToggleBtn.addEventListener('click', () => {
-            if (bodyElement.classList.contains('dark-theme')) {
-                bodyElement.classList.remove('dark-theme');
-                bodyElement.classList.add('light-theme');
-            } else {
-                bodyElement.classList.remove('light-theme');
-                bodyElement.classList.add('dark-theme');
-            }
-        });
     </script>
 </body>
 </html>
