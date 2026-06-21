@@ -57,10 +57,10 @@
 
                 <div class="diagram-viewport">
                     <img src="TB-001-CR30_Render_1.png" alt="CR30 Accumulator Assembly Render" class="diagram-base-img">
-                    <button class="hotspot-node active" style="top: 30%; left: 45%;" onclick="focusMechanism(event, 'sub-housing', '#mechanical')" data-label="Housing Structure"></button>
-                    <button class="hotspot-node" style="top: 55%; left: 52%;" onclick="focusMechanism(event, 'sub-baskets', '#mechanical')" data-label="Module Baskets"></button>
-                    <button class="hotspot-node" style="top: 78%; left: 78%;" onclick="focusMechanism(event, 'sub-mounts', '#tractive-battery')" data-label="Chassis Mounts"></button>
-                    <button class="hotspot-node" style="top: 45%; left: 24%;" onclick="focusMechanism(event, 'sub-hvd', '#motor-inverter')" data-label="Power Prism HVD"></button>
+                    <button class="hotspot-node active" style="top: 48%; left: 42%;" onclick="focusMechanism(event, 'sub-housing', '#mechanical')" data-label="Housing Structure"></button>
+                    <button class="hotspot-node" style="top: 55%; left: 56%;" onclick="focusMechanism(event, 'sub-baskets', '#mechanical')" data-label="Module Baskets"></button>
+                    <button class="hotspot-node" style="top: 68%; left: 68%;" onclick="focusMechanism(event, 'sub-mounts', '#tractive-battery')" data-label="Chassis Mounts"></button>
+                    <button class="hotspot-node" style="top: 52%; left: 32%;" onclick="focusMechanism(event, 'sub-hvd', '#motor-inverter')" data-label="Power Prism HVD"></button>
                 </div>
 
                 <div class="annotation-layout">
@@ -129,13 +129,21 @@
         <section id="software" class="binder-section">
             <div class="section-badge">04 // EMBEDDED SOFTWARE INFRASTRUCTURE</div>
             <h1>State and Communication Logic Matrix</h1>
-            <p>Controls code, safety tracking loops, and CAN telemetry formatting channels.</p>
+            <p class="lead-text">Controls code, safety tracking loops, and CAN telemetry formatting channels.</p>
+            <div class="tech-callout">
+                <h4>Firmware Integrity Loop</h4>
+                <p>The core accumulator system runs a deterministic processing loop monitoring over-voltage, under-voltage, and cell core temperature limits at 250Hz.</p>
+            </div>
         </section>
 
         <section id="testing" class="binder-section">
             <div class="section-badge">05 // SYSTEM TEST PROCEDURES</div>
             <h1>Physical Testing Logging Matrix</h1>
-            <p>Verification data sheets, stress limits, and dyno diagnostic runs.</p>
+            <p class="lead-text">Verification data sheets, stress limits, and dyno diagnostic runs.</p>
+            <div class="tech-callout">
+                <h4>Isolation Verification Testing</h4>
+                <p>All structural sub-baskets undergo isolation breakdown testing up to 1000V DC prior to active pack integration steps.</p>
+            </div>
         </section>
     </main>
 
@@ -163,7 +171,6 @@
     </div>
 
     <script>
-        // --- Interactive Tab Switcher ---
         function switchTab(evt, tabId) {
             const container = evt.currentTarget.closest('.interactive-tabs-container');
             if (!container) return;
@@ -176,7 +183,6 @@
             evt.currentTarget.classList.add('active');
         }
         
-        // --- Topbar Scrollspy Activation ---
         const sections = document.querySelectorAll('.binder-section');
         const navLi = document.querySelectorAll('.nav-links li a');
         window.addEventListener('scroll', () => {
@@ -195,7 +201,6 @@
             });
         });
         
-        // --- Theme Mode Toggle Handler Engine ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const bodyElement = document.body;
         
@@ -209,14 +214,11 @@
             }
         });
         
-        // --- 4414 Diagram Interlock Mechanism Engine ---
         function focusMechanism(evt, tabId, sectionId) {
-            // 1. Update hotspot active states if direct hotspot bubble clicked
             if (evt && evt.currentTarget) {
                 document.querySelectorAll('.hotspot-node').forEach(node => node.classList.remove('active'));
                 evt.currentTarget.classList.add('active');
             } else {
-                // If text card was clicked, find corresponding bubble via dataset lookups
                 document.querySelectorAll('.hotspot-node').forEach(node => {
                     node.classList.remove('active');
                     if (node.getAttribute('onclick').includes(tabId)) {
@@ -225,7 +227,6 @@
                 });
             }
         
-            // 2. Safely trigger the underlying document tabs
             const targetTabContent = document.getElementById(tabId);
             if (targetTabContent) {
                 const container = targetTabContent.closest('.interactive-tabs-container');
@@ -244,7 +245,6 @@
                 }
             }
         
-            // 3. Smooth scroll focus to destination hardware matrix
             scrollToId(sectionId);
         }
         
@@ -258,7 +258,7 @@
             }
         }
         
-        // --- Dynamic Live Telemetry Simulation Systems ---
+        // --- Dynamic Live Telemetry Engine ---
         let baseOCV = 600.0; 
         const voltElement = document.getElementById('dash-voltage');
         
