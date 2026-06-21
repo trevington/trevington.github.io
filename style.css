@@ -423,3 +423,141 @@ p {
     text-shadow: 0 0 15px rgba(200, 16, 46, 0.6);
     transition: color 0.1s ease, text-shadow 0.1s ease;
 }
+
+/* 4414 HighTide Interactive Workspace Blueprint Layout */
+.interactive-diagram-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    background-color: #090b0e;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.diagram-viewport {
+    position: relative;
+    width: 55%;
+    max-width: 600px;
+    z-index: 5;
+}
+
+.diagram-base-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: screen; /* Matches smooth CAD wireframe output aesthetics */
+}
+
+/* Pulsing Hotspot Target Vectors */
+.hotspot-node {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hotspot-node::after {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    animation: nodePulse 2s infinite ease-out;
+    opacity: 0;
+}
+
+@keyframes nodePulse {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+.hotspot-node:hover, .hotspot-node.active {
+    background-color: var(--accent-color);
+    border-color: #fff;
+    box-shadow: 0 0 15px var(--accent-color);
+    scale: 1.2;
+}
+
+/* Hover Tooltip Label Flags */
+.hotspot-node::before {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0b0e14;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.hotspot-node:hover::before {
+    opacity: 1;
+}
+
+/* Column Text Layout Annotations */
+.annotation-layout {
+    position: absolute;
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    z-index: 6;
+}
+
+.left-anno { left: 3rem; }
+.right-anno { right: 3rem; text-align: right; }
+
+.anno-card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.anno-card h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.anno-card p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+.anno-card:hover h4 {
+    color: var(--accent-color);
+}
+.anno-card:hover {
+    transform: translateX(4px);
+}
+.right-anno .anno-card:hover {
+    transform: translateX(-4px);
+}
+
+@media (max-width: 900px) {
+    .interactive-diagram-container { flex-direction: column; padding: 2rem 0; }
+    .diagram-viewport { width: 80%; }
+    .annotation-layout { position: relative; width: 90%; left: auto; right: auto; text-align: left; gap: 1.5rem; margin-top: 1.5rem;}
+}
