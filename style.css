@@ -109,7 +109,7 @@ body {
 .topbar .nav-links a:hover, .topbar .nav-links a.active {
     color: var(--text-main);
     background-color: var(--bg-card);
-    border-bottom: 2px solid var(--accent-color); /* Top layer: Red (2px) */
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .topbar .nav-links a:hover::after, .topbar .nav-links a.active::after {
@@ -117,9 +117,9 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -4px; /* Extends right below the red border line */
+    bottom: -4px;
     height: 2px;
-    background-color: var(--accent-secondary); /* Bottom layer: Grey (2px) */
+    background-color: var(--accent-secondary);
 }
 
 /* --- UI Theme Mode Switcher Controls --- */
@@ -147,12 +147,10 @@ body {
     height: 18px;
 }
 
-/* Toggle Display Inversion Filters */
 .dark-theme .sun-icon { display: block; }
 .dark-theme .moon-icon { display: none; }
 .light-theme .sun-icon { display: none; }
 .light-theme .moon-icon { display: block; }
-
 
 /* --- Floating Telemetry Dock System --- */
 .live-dashboard.floating-dash {
@@ -175,9 +173,24 @@ body {
 .floating-dash .dash-header {
     margin-bottom: 0.5rem;
     font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pulse-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-color);
 }
 
 .floating-dash .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -187,16 +200,23 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .floating-dash .dash-card label {
     margin-bottom: 0;
     font-size: 0.7rem;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-secondary);
 }
 
 .floating-dash .dash-card .value {
     font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .floating-dash .dash-card .value.over-current {
@@ -204,64 +224,40 @@ body {
     text-shadow: 0 0 8px rgba(200, 16, 46, 0.5);
 }
 
-/* Offset page footer boundary limits to protect against overlay blocking */
 .content {
     margin-top: 70px;
-    padding: 4rem 4rem 8rem 4rem; 
+    padding: 4rem 4rem 10rem 4rem; 
     max-width: 1200px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* --- Structural Cleanup Changes (Theme Adaptations) --- */
 .binder-section {
     padding-top: 2rem;
     margin-bottom: 5rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 4rem;
 }
-.interactive-diagram-container { background-color: var(--bg-card); border-color: var(--border-color); }
-.interactive-tabs-container { background-color: var(--bg-card); border-color: var(--border-color); }
-.tab-headers { background-color: var(--dash-bg); border-bottom-color: var(--border-color); }
-.spec-card { background-color: var(--card-spec-bg); border-color: var(--border-color); }
-.tech-table { background-color: var(--bg-card); border-color: var(--border-color); }
-.tech-table th { background-color: var(--dash-bg); border-bottom-color: var(--border-color); }
-.tech-table td { border-bottom-color: var(--border-color); }
-.code-window { background-color: var(--bg-dark); border-color: var(--border-color); }
-.code-header { background-color: var(--dash-bg); border-bottom-color: var(--border-color); }
-.tech-callout { background-color: var(--bg-card); }
-.telemetry-widget { background-color: var(--dash-bg); border-color: var(--border-color); }
 
-h1, .spec-card .spec-value, .tech-callout h4, .tech-table th { color: var(--text-main); }
-.diagram-base-img { mix-blend-mode: normal; }
-
-@media (max-width: 900px) {
-    .topbar { padding: 0 1.5rem; }
-    .topbar .nav-links { display: none; } 
-    .content { padding: 2rem 1.5rem 10rem 1.5rem; }
-    .floating-dash .dash-grid { grid-template-columns: 1fr; gap: 0.5rem; }
-    .floating-dash .dash-card { padding: 0.5rem 0.75rem; }
-}
-/* --- 4414 HighTide Interactive Workspace Blueprint Layout (Fixed Bounds) --- */
+/* --- 4414 HighTide Workspace Layout (Fixed) --- */
 .interactive-diagram-container {
     position: relative;
     width: 100%;
-    min-height: auto;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 2rem 0;
-    padding: 2rem 0;
+    padding: 2rem;
     overflow: hidden;
     box-sizing: border-box;
 }
 
 .diagram-viewport {
-    position: relative; /* Rigid reference frame constraints for hotspots */
+    position: relative; 
     width: 50%;
     max-width: 550px;
     height: auto;
@@ -271,12 +267,12 @@ h1, .spec-card .spec-value, .tech-callout h4, .tech-table th { color: var(--text
 
 .diagram-base-img {
     width: 100%;
-    max-width: 100%; /* Prevents PNG/JPG scaling overflow completely */
+    max-width: 100%; 
     height: auto;
     display: block;
 }
 
-/* Pulsing Hotspot Target Vectors */
+/* Pulsing Hotspot Targets */
 .hotspot-node {
     position: absolute;
     width: 16px;
@@ -285,10 +281,10 @@ h1, .spec-card .spec-value, .tech-callout h4, .tech-table th { color: var(--text
     border: 3px solid var(--accent-color);
     border-radius: 50%;
     cursor: pointer;
-    transform: translate(-50%, -50%); /* Centers perfectly over coordinate points */
+    transform: translate(-50%, -50%);
     z-index: 10;
     outline: none;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.2s ease;
 }
 
 .hotspot-node::after {
@@ -312,3 +308,6 @@ h1, .spec-card .spec-value, .tech-callout h4, .tech-table th { color: var(--text
     box-shadow: 0 0 15px var(--accent-color);
     transform: translate(-50%, -50%) scale(1.2);
 }
+
+.annotation-layout {
+    width
