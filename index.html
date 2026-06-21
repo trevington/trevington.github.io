@@ -8,37 +8,72 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- MathJax Configuration and Script for Rendering Inline LaTeX -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
+    <nav class="topbar">
+        <div class="topbar-brand">
             <h2>CR30 EV</h2>
-            <p>Powertrain Binder</p>
+            <p>// Powertrain Binder</p>
         </div>
         <ul class="nav-links">
-            <li><a href="#mechanical" class="active">01. Mechanical</a></li>
-            <li><a href="#tractive-battery">02. Tractive Battery</a></li>
-            <li><a href="#motor-inverter">03. Motor & Inverter</a></li>
-            <li><a href="#software">04. Software</a></li>
-            <li><a href="#testing">05. Testing</a></li>
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#mechanical">Mechanical</a></li>
+            <li><a href="#tractive-battery">Battery</a></li>
+            <li><a href="#motor-inverter">Propulsion</a></li>
+            <li><a href="#software">Software</a></li>
+            <li><a href="#testing">Testing</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content Area -->
     <main class="content">
+
+        <section id="overview" class="binder-section">
+            <div class="overview-header">
+                <div class="overview-text">
+                    <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
+                    <h1>Cyclone Racing CR30 Accumulator</h1>
+                    <p class="lead-text">Cyclone Racing's second-generation tractive battery pack, engineering structural architectures, and the team's first electric powertrain to drive under its own power.</p>
+                    <p>This technical binder indexes the complete mechanical, electrical, and structural engineering documentation for the CR30 tractive system, alongside active testing diagnostics and hardware retrofits.</p>
+                </div>
+                <div class="overview-image-container">
+                    <img src="TB-001-CR30_Render_1.jpg" alt="CR30 Accumulator Assembly Render" class="render-img">
+                </div>
+            </div>
+
+            <div class="live-dashboard">
+                <div class="dash-header">
+                    <span>LIVE BUS TELEMETRY STREAM</span>
+                    <span class="pulse-indicator"></span>
+                </div>
+                <div class="dash-grid">
+                    <div class="dash-card">
+                        <label>Pack Voltage</label>
+                        <div class="value" id="dash-voltage">596.4 V</div>
+                        <span class="label-sub">Tractive Rail Bus</span>
+                    </div>
+                    <div class="dash-card">
+                        <label>Motor Velocity</label>
+                        <div class="value" id="dash-rpm">0 RPM</div>
+                        <span class="label-sub">Axial Flux Core</span>
+                    </div>
+                    <div class="dash-card">
+                        <label>Current Draw</label>
+                        <div class="value" id="dash-current">0.0 A</div>
+                        <span class="label-sub">Continuous Load</span>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <!-- Section 1: Mechanical -->
         <section id="mechanical" class="binder-section">
             <div class="section-badge">01 // PACKAGING & STRUCTURAL</div>
             <h1>Mechanical Design</h1>
@@ -50,7 +85,6 @@
                     <button class="tab-btn" onclick="switchTab(event, 'mech-baskets')">Module Baskets</button>
                     <button class="tab-btn" onclick="switchTab(event, 'mech-mounts')">Chassis Mounts</button>
                 </div>
-                <!-- Sub-tab 1: Aluminum Housing -->
                 <div id="mech-housing" class="tab-content active">
                     <h3>Self-Jigging Enclosure Assembly</h3>
                     <p>To eliminate the complex external clamping setups that caused severe panel warping during the CR29 build, the CR30 welded aluminum enclosure utilizes waterjet-cut slot and tab features integrated directly along the panel seams. Internal walls feature precision slots that receive matching tabs on external panels, locking the raw structural sheets square for immediate tack-welding without external fixtures.</p>
@@ -59,7 +93,6 @@
                         <p>Corner pieces were omitted from the self-jigging pattern. Post-weld distortion pulled one corner visibly inward, compressing the available volume for the high-voltage distribution layout and requiring an emergency tight-tolerance redesign of the Power Prism sleeve component.</p>
                     </div>
                 </div>
-                <!-- Sub-tab 2: Module Baskets -->
                 <div id="mech-baskets" class="tab-content">
                     <h3>PAHT-CF High-Temperature Cell Enclosures</h3>
                     <p>Each of the 5 module baskets is a structural 3D-printed shell holding 28 pouch cells in a rigid matrix. Transitioning away from brittle polycarbonate, <strong>PAHT-CF (High-Temperature Carbon Fiber Nylon)</strong> was selected for its superior impact resistance during localized destruction testing. Structural retention features include an open-face close-out plate that sandwiches the cell group, and dedicated lifting provisions designed to drop directly into the integrated vertical retention stack holes for quick-extraction modular servicing.</p>
@@ -68,7 +101,6 @@
                         <div class="spec-card"><h3>Z-Scale Comp</h3><span class="spec-value">+1.25%</span></div>
                     </div>
                 </div>
-                <!-- Sub-tab 3: Chassis Mounts -->
                 <div id="mech-mounts" class="tab-content">
                     <h3>Structural Monocoque Interfaces</h3>
                     <p>The entire accumulator system mechanical load transfers to the vehicle monocoque through 10 bolted points (4 rear, 6 front). Fasteners anchor directly into pre-preg composite inserts (pucks) positioned inside the carbon laminate prior to autoclaving. To secure physical structural equivalency certification (SES) after manufacturing deviations, mechanical shims and ground aluminum block spacers were integrated to bridge a step height discrepancy caused by proud front puck surfaces.</p>
@@ -76,7 +108,6 @@
             </div>
         </section>
 
-        <!-- Section 2: Tractive Battery -->
         <section id="tractive-battery" class="binder-section">
             <div class="section-badge">02 // ENERGY STORAGE</div>
             <h1>Tractive Battery</h1>
@@ -133,13 +164,11 @@
             </table>
         </section>
 
-        <!-- Section 3: Motor & Inverter -->
         <section id="motor-inverter" class="binder-section">
             <div class="section-badge">03 // PROPULSION & DISTRO</div>
             <h1>Motor & Inverter</h1>
             <p>Tractive drive units, corner high-voltage distribution components, and specialized ampacity busbar conductor calculations.</p>
             
-            <!-- Power Prism Sub-module layout -->
             <div class="interactive-tabs-container">
                 <div class="tab-headers">
                     <button class="tab-btn active" onclick="switchTab(event, 'prop-hvd')">The Power Prism HVD</button>
@@ -150,13 +179,12 @@
                     <p>Departing from bulky, long Coroflex high-voltage cable runs, CR30 consolidates primary tractive components into a tight structural 3D-printed sleeve isolated in the corner of the pack. This single localized unit packages the main air contactors, the principal system fuse, and the hardline interconnect distribution busbars.</p>
                 </div>
                 <div id="prop-busbars" class="tab-content">
-                    <h3>Transient Thermal Evaluation ($\rho \cdot L / A$)</h3>
+                    <h3>Transient Thermal Evaluation ($\frac{\rho \cdot L}{A}$)</h3>
                     <p>Standard static ampacity tables are highly conservative for competition cars that only draw maximum current during brief acceleration states. Conductor geometries were downsized significantly by evaluating heat generation using transient thermodynamic resistance equations matched directly against endurance-duration ambient convection values.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Software -->
         <section id="software" class="binder-section">
             <div class="section-badge">04 // EMBEDDED CONTROLS</div>
             <h1>Software Architecture</h1>
@@ -183,7 +211,6 @@
             </div>
         </section>
 
-        <!-- Section 5: Testing -->
         <section id="testing" class="binder-section">
             <div class="section-badge">05 // TELEMETRY & HARDWARE RESCUE</div>
             <h1>Testing & Hardware Validation</h1>
@@ -192,7 +219,6 @@
             <div class="telemetry-widget">
                 <div class="widget-header">
                     <span>First Drive Trackside Snapshot (40 kW Limited Run)</span>
-                    <span class="pulse-indicator"></span>
                 </div>
                 <div class="widget-grid">
                     <div class="metric-box">
@@ -219,6 +245,7 @@
     </main>
 
     <script>
+        // Tab Switcher
         function switchTab(evt, tabId) {
             const container = evt.currentTarget.closest('.interactive-tabs-container');
             container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -227,13 +254,14 @@
             evt.currentTarget.classList.add('active');
         }
 
+        // Topbar Scrollspy
         const sections = document.querySelectorAll('.binder-section');
         const navLi = document.querySelectorAll('.nav-links li a');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
+                if (pageYOffset >= sectionTop - 160) {
                     current = section.getAttribute('id');
                 }
             });
@@ -244,6 +272,18 @@
                 }
             });
         });
+
+        // Dynamic Global Dashboard Simulation
+        setInterval(() => {
+            // Simulated full load cycles
+            const volt = (585 + Math.random() * 15).toFixed(1);
+            const current = (25 + Math.random() * 140).toFixed(1);
+            const rpm = Math.floor(2500 + Math.random() * 3200);
+            
+            document.getElementById('dash-voltage').innerText = `${volt} V`;
+            document.getElementById('dash-current').innerText = `${current} A`;
+            document.getElementById('dash-rpm').innerText = `${rpm} RPM`;
+        }, 1000);
     </script>
 </body>
 </html>
