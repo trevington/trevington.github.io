@@ -416,3 +416,10 @@ p {
     .overview-header { flex-direction: column; gap: 2rem; }
     .content { padding: 2rem 1.5rem; }
 }
+
+/* High Amperage Alarm State */
+.dash-card .value.over-current {
+    color: var(--accent-color) !important;
+    text-shadow: 0 0 15px rgba(200, 16, 46, 0.6);
+    transition: color 0.1s ease, text-shadow 0.1s ease;
+}
