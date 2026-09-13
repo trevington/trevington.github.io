@@ -169,3 +169,25 @@ footer {
 .social-links a:hover {
   color: var(--text);
 }
+
+/* Image and Caption Styling */
+figure {
+  margin: 2.5rem 0;
+  text-align: left;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
