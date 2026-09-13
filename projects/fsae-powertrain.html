@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Title — Trevor Dayal</title>
+  <!-- Adjust stylesheet path if nested in a subfolder like /projects/ -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="logo">Trevor Dayal</a>
+    <nav>
+      <a href="../index.html">home</a>
+      <a href="../resume.html">resume</a>
+      <a href="../posts.html">posts</a>
+      <a href="../about.html">about</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Project Title: Subtitle or Brief Summary</h1>
+      <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; margin-top: -0.5rem;">
+        Published: Month Day, Year &bull; Categories: Simulation, EV Powertrain
+      </p>
+
+      <hr>
+
+      <h2>Overview</h2>
+      <p>Describe the core objective of the project, constraints, requirements, and final performance metrics achieved.</p>
+
+      <h2>System Architecture & Design</h2>
+      <p>Explain the engineering methodology. For instance, code snippets or mathematical formulations look clean in the native monospace styling:</p>
+      
+      <pre><code># Example script invocation snippet
+import openmdao.api as om
+from pymotorcad.segments import MotorCAD
+
+model = om.Group()
+# Setup optimization routine...
+</code></pre>
+
+      <h2>Results & Validation</h2>
+      <p>Discuss simulation data, finite element analysis (FEA) findings, or physical validation metrics. Include images using clean HTML semantics:</p>
+      
+      <!-- Example image layout -->
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="path-to-image.png" alt="Description of FEA output" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fig 1. Thermal dissipation profile across battery pack integration loops.</figcaption>
+      </figure>
+
+    </article>
+
+    <hr style="margin-top: 3rem;">
+
+    <!-- Giscus Comment System Integration -->
+    <section class="comments-section">
+      <h3>Discussion & Feedback</h3>
+      <script src="https://giscus.app/client.js"
+        data-repo="yourusername/your-repo-name"
+        data-repo-id="REPLACE_WITH_REPO_ID"
+        data-category="Announcements"
+        data-category-id="REPLACE_WITH_CATEGORY_ID"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Trevor Dayal</span>
+    <div class="social-links">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</b
+ody>
+</html>
