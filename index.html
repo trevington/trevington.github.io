@@ -1,367 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CR30 EV Powertrain Technical Binder</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script>
-      window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trevor Dayal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
+<body>
 
-    <nav class="topbar">
-        <div class="topbar-left">
-            <div class="topbar-brand">
-                <h2>CR30 EV</h2>
-                <p>// Powertrain Binder</p>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#overview" class="active">Overview</a></li>
-                <li><a href="#mechanical">Mechanical</a></li>
-                <li><a href="#tractive-battery">Battery</a></li>
-                <li><a href="#motor-inverter">Propulsion</a></li>
-                <li><a href="#software">Software</a></li>
-                <li><a href="#testing">Testing</a></li>
-            </ul>
-        </div>
-        
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Interface Theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
+  <header>
+    <a href="index.html" class="logo">Trevor Dayal</a>
+    <nav>
+      <a href="index.html" class="active">home</a>
+      <a href="resume.html">resume</a>
+      <a href="posts.html">posts</a>
+      <a href="about.html">about</a>
     </nav>
+  </header>
 
-    <main class="content">
-        <section id="overview" class="binder-section">
-            <div class="section-badge">00 // GLOBAL SYSTEM OVERVIEW</div>
-            <h1>Cyclone Racing CR30 Tractive Battery</h1>
-            <p class="lead-text">Click on any system hotspot node over the tractive battery layout to instantly open its technical documentation entry below.</p>
+  <main>
+    <section>
+      <h1>Mechanical Engineering & Systems Design</h1>
+      <p>I am a mechanical engineering student specializing in automated design optimization, electric vehicle powertrains, and hardware simulation. This site acts as a technical log of my projects, builds, and engineering notes.</p>
+    </section>
 
-            <div class="interactive-diagram-container">
-                <div class="annotation-layout">
-                    <div class="anno-card" onclick="focusMechanism(null, 'sub-housing', '#mechanical')">
-                        <h4>ALUMINUM HOUSING</h4>
-                        <p>Self-jigging slot & tab waterjet seams to prevent raw panel distortion.</p>
-                    </div>
-                    <div class="anno-card" onclick="focusMechanism(null, 'sub-baskets', '#mechanical')">
-                        <h4>MODULE BASKETS</h4>
-                        <p>PAHT-CF carbon-fiber nylon holding cell matrices perfectly rigid.</p>
-                    </div>
-                </div>
+    <section>
+      <h2>Featured Projects</h2>
+      <ul class="post-list">
+        <li class="post-item">
+          <a href="projects/fsae-powertrain.html">Formula SAE Powertrain & Thermal Modeling</a>
+          <time datetime="2026-05">May 2026</time>
+        </li>
+        <li class="post-item">
+          <a href="projects/motor-optimization.html">Automated Electric Motor Optimization with OpenMDAO</a>
+          <time datetime="2026-02">Feb 2026</time>
+        </li>
+      </ul>
+      <p><a href="posts.html">View all posts &rarr;</a></p>
+    </section>
+  </main>
 
-                <div class="diagram-viewport">
-                    <img src="TB-001-CR30_Render_1.png" alt="CR30 Tractive Battery Assembly Render" class="diagram-base-img">
-                    <button class="hotspot-node active" style="top: 48%; left: 42%;" onclick="focusMechanism(event, 'sub-housing', '#mechanical')" data-label="Housing Structure"></button>
-                    <button class="hotspot-node" style="top: 55%; left: 56%;" onclick="focusMechanism(event, 'sub-baskets', '#mechanical')" data-label="Module Baskets"></button>
-                    <button class="hotspot-node" style="top: 68%; left: 68%;" onclick="focusMechanism(event, 'sub-mounts', '#tractive-battery')" data-label="Chassis Mounts"></button>
-                    <button class="hotspot-node" style="top: 52%; left: 32%;" onclick="focusMechanism(event, 'sub-hvd', '#motor-inverter')" data-label="Power Prism HVD"></button>
-                    <button class="hotspot-node" style="top: 42%; left: 49%;" onclick="focusMechanism(event, 'cooling', '#cooling')" data-label="Cooling System"></button>
-                </div>
-
-                <div class="annotation-layout">
-                    <div class="anno-card" onclick="focusMechanism(null, 'sub-hvd', '#motor-inverter')">
-                        <h4>POWER PRISM HVD</h4>
-                        <p>3D-printed localized corner sleeve isolating main line high voltage contactors.</p>
-                    </div>
-                    <div class="anno-card" onclick="focusMechanism(null, 'sub-mounts', '#tractive-battery')">
-                        <h4>CHASSIS MOUNTS</h4>
-                        <p>10 structural mounting interfaces anchoring directly into the monocoque pucks.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="mechanical" class="binder-section">
-            <div class="section-badge">01 // MECHANICAL DESIGN CONFIGURATION</div>
-            <h1>Structural Documentation</h1>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'sub-housing')">Enclosure Shell</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'sub-baskets')">Internal Matrices</button>
-                </div>
-                <div id="sub-housing" class="tab-content active">
-                    <h4>Aluminum Monocoque Shielding</h4>
-                    <p>The structural containment box utilizes custom laser-cut sheets featuring optimized slot-and-tab configurations to guarantee squareness during assembly tracking.</p>
-                </div>
-                <div id="sub-baskets" class="tab-content">
-                    <h4>PAHT-CF Cell Retention Matrix</h4>
-                    <p>High-temperature Carbon Fiber Nylon internal baskets hold individual cell segments isolated safely from structural impact and friction wear paths.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="tractive-battery" class="binder-section">
-            <div class="section-badge">02 // TRACTIVE BATTERY MATRIX</div>
-            <h1>Cell Configuration & Mounts</h1>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'sub-mounts')">Structural Isolation Mounts</button>
-                </div>
-                <div id="sub-mounts" class="tab-content active">
-                    <h4>Chassis Hardpoint Interfaces</h4>
-                    <p>10 hardpoint mounting positions handle multi-axis energy displacement forces. These spread loading moments safely into reinforced carbon chassis hardpoints.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="motor-inverter" class="binder-section">
-            <div class="section-badge">03 // PROPULSION SYSTEM CORE</div>
-            <h1>Power Distribution</h1>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'sub-hvd')">Power Prism Isolation</button>
-                </div>
-                <div id="sub-hvd" class="tab-content active">
-                    <h4>High Voltage Disconnect Subsystem</h4>
-                    <p>The localized Power Prism enclosure mechanically isolates safety elements, protecting raw high-amperage lines from transient arcs or housing structural contacts.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="software" class="binder-section">
-            <div class="section-badge">04 // EMBEDDED SOFTWARE INFRASTRUCTURE</div>
-            <h1>State and Communication Logic Matrix</h1>
-            <p class="lead-text">Controls code, safety tracking loops, and CAN telemetry formatting channels.</p>
-            <div class="tech-callout">
-                <h4>Firmware Integrity Loop</h4>
-                <p>The core accumulator system runs a deterministic processing loop monitoring over-voltage, under-voltage, and cell core temperature limits at 250Hz.</p>
-            </div>
-        </section>
-
-        <section id="testing" class="binder-section">
-            <div class="section-badge">05 // SYSTEM TEST PROCEDURES</div>
-            <h1>Physical Testing Logging Matrix</h1>
-            <p class="lead-text">Verification data sheets, stress limits, and dyno diagnostic runs.</p>
-            <div class="tech-callout">
-                <h4>Isolation Verification Testing</h4>
-                <p>All structural sub-baskets undergo isolation breakdown testing up to 1000V DC prior to active pack integration steps.</p>
-            </div>
-        </section>
-
-        <section id="cooling" class="binder-section">
-            <div class="section-badge">06 // COOLING SYSTEM DESIGN</div>
-            <h1>Cooling Documentation</h1>
-            
-            <div class="interactive-tabs-container">
-                <div class="tab-headers">
-                    <button class="tab-btn active" onclick="switchTab(event, 'louvers')">Ventilation</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'fans')">Fans</button>
-                </div>
-                <div id="Cooling Loop" class="tab-content active">
-                    <h4>Cooling Loop</h4>
-                    <p>We use fans n stuff</p>
-                </div>
-                <div id="3D Printed Louvers" class="tab-content">
-                    <h4>Louver Design</h4>
-                    <p>Oooouuurrrr</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="live-dashboard floating-dash">
-        <div class="dash-header">
-            <span>LIVE BUS TELEMETRY STREAM</span>
-            <div class="dash-status-group">
-                <span class="pulse-indicator"></span>
-            </div>
-        </div>
-        <div class="dash-grid">
-            <div class="dash-card">
-                <label>Pack Voltage</label>
-                <div class="value" id="dash-voltage">600.0 V</div>
-            </div>
-            <div class="dash-card">
-                <label>Motor Velocity</label>
-                <div class="value" id="dash-rpm">0 RPM</div>
-            </div>
-            <div class="dash-card">
-                <label>Current Draw</label>
-                <div class="value" id="dash-current">0.0 A</div>
-            </div>
-        </div>
+  <footer>
+    <span>&copy; 2026 Trevor Dayal</span>
+    <div class="social-links">
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+  </footer>
 
-    <script>
-        function switchTab(evt, tabId) {
-            const container = evt.currentTarget.closest('.interactive-tabs-container');
-            if (!container) return;
-            
-            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) targetContent.classList.add('active');
-            evt.currentTarget.classList.add('active');
-        }
-        
-        const sections = document.querySelectorAll('.binder-section');
-        const navLi = document.querySelectorAll('.nav-links li a');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 160) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLi.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
-            });
-        });
-        
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const bodyElement = document.body;
-        
-        themeToggleBtn.addEventListener('click', () => {
-            if (bodyElement.classList.contains('dark-theme')) {
-                bodyElement.classList.remove('dark-theme');
-                bodyElement.classList.add('light-theme');
-            } else {
-                bodyElement.classList.remove('light-theme');
-                bodyElement.classList.add('dark-theme');
-            }
-        });
-        
-        function focusMechanism(evt, tabId, sectionId) {
-            if (evt && evt.currentTarget) {
-                document.querySelectorAll('.hotspot-node').forEach(node => node.classList.remove('active'));
-                evt.currentTarget.classList.add('active');
-            } else {
-                document.querySelectorAll('.hotspot-node').forEach(node => {
-                    node.classList.remove('active');
-                    if (node.getAttribute('onclick').includes(tabId)) {
-                        node.classList.add('active');
-                    }
-                });
-            }
-        
-            const targetTabContent = document.getElementById(tabId);
-            if (targetTabContent) {
-                const container = targetTabContent.closest('.interactive-tabs-container');
-                if (container) {
-                    container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                    
-                    targetTabContent.classList.add('active');
-                    
-                    const buttons = container.querySelectorAll('.tab-btn');
-                    buttons.forEach(btn => {
-                        if (btn.getAttribute('onclick').includes(tabId)) {
-                            btn.classList.add('active');
-                        }
-                    });
-                }
-            }
-        
-            scrollToId(sectionId);
-        }
-        
-        function scrollToId(elementId) {
-            const targetElement = document.querySelector(elementId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 90,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        
-        // --- Dynamic Live Telemetry Engine ---
-        let baseOCV = 600.0; 
-        const voltElement = document.getElementById('dash-voltage');
-        
-        setInterval(() => {
-            if (baseOCV > 0) {
-                const capacityLoss = 0.4 + (Math.random() * 0.6);
-                baseOCV -= capacityLoss;
-                if (baseOCV < 0) baseOCV = 0;
-            }
-        }, 1000);
-        
-        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        let lastScrollTime = Date.now();
-        let targetRPM = 0;
-        let currentRPM = 0;
-        const rpmElement = document.getElementById('dash-rpm');
-        
-        window.addEventListener('scroll', () => {
-            const now = Date.now();
-            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const deltaY = Math.abs(currentScrollTop - lastScrollTop);
-            const deltaTime = now - lastScrollTime;
-            
-            if (deltaTime > 0) {
-                const speed = deltaY / deltaTime;
-                targetRPM = Math.min(Math.floor(speed * 1500), 5500);
-            }
-            lastScrollTop = currentScrollTop;
-            lastScrollTime = now;
-        });
-        
-        let lastMouseX = null;
-        let lastMouseY = null;
-        let lastMouseTime = Date.now();
-        let targetCurrent = 0.0;
-        let currentAmpDraw = 0.0;
-        const currentElement = document.getElementById('dash-current');
-        
-        window.addEventListener('mousemove', (e) => {
-            const now = Date.now();
-            const deltaTime = now - lastMouseTime;
-            
-            if (lastMouseX !== null && deltaTime > 0) {
-                const deltaX = e.clientX - lastMouseX;
-                const deltaY = e.clientY - lastMouseY;
-                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                const mouseSpeed = distance / deltaTime;
-                
-                targetCurrent = Math.min((mouseSpeed * 80), 240.0);
-            }
-            lastMouseX = e.clientX;
-            lastMouseY = e.clientY;
-            lastMouseTime = now;
-        });
-        
-        function smoothTelemetryLoop() {
-            currentRPM += (targetRPM - currentRPM) * 0.1;
-            if (currentRPM < 1) currentRPM = 0;
-            rpmElement.innerText = `${Math.floor(currentRPM)} RPM`;
-            targetRPM *= 0.92; 
-            
-            currentAmpDraw += (targetCurrent - currentAmpDraw) * 0.15;
-            if (currentAmpDraw < 0.1) currentAmpDraw = 0;
-            currentElement.innerText = `${currentAmpDraw.toFixed(1)} A`;
-            
-            if (currentAmpDraw > 200.0) {
-                currentElement.classList.add('over-current');
-            } else {
-                currentElement.classList.remove('over-current');
-            }
-            targetCurrent *= 0.85;
-        
-            const internalResistanceFactor = 0.1875; 
-            const voltageSag = currentAmpDraw * internalResistanceFactor;
-            let terminalVoltage = baseOCV - voltageSag;
-            if (terminalVoltage < 0) terminalVoltage = 0;
-            
-            voltElement.innerText = `${terminalVoltage.toFixed(1)} V`;
-        
-            requestAnimationFrame(smoothTelemetryLoop);
-        }
-        requestAnimationFrame(smoothTelemetryLoop);
-    </script>
 </body>
-</html>
+</
+    html>
