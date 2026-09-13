@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Posts — Trevor Dayal</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function() {
+      const hour = new Date().getHours();
+      // Adjust these hours to your preference (e.g., 19 is 7 PM, 6 is 6 AM)
+      if (hour < 6 || hour >= 19) {
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+  </script>
 </head>
 <body>
 
