@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2DoF Arm — Trevor Dayal</title>
+  <!-- Adjust stylesheet path if nested in a subfolder like /projects/ -->
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    (function() {
+      const hour = new Date().getHours();
+      // Adjust these hours to your preference (e.g., 19 is 7 PM, 6 is 6 AM)
+      if (hour < 7 || hour >= 20) {
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <header>
+    <a href="../index.html" class="logo">Trevor Dayal</a>
+    <nav>
+      <a href="../index.html">home</a>
+      <a href="../resume.html">resume</a>
+      <a href="../posts.html">posts</a>
+      <a href="../about.html">about</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>FRC Double Jointed Arm Concept</h1>
+      <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; margin-top: -0.5rem;">
+        Published: September 14th, 2026
+      </p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/robot(20).png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Final Design Concept</figcaption>
+      </figure>
+
+      <h2>Overview</h2>
+      <p>At the start of the 2025 FRC season I conceptualized a double-jointed arm design. While my team didn't pursue the design, in the offseason I explored the concept further. A 2 degree of freedom arm is cheaper and simpler than most elevator designs common in 2025.</p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/image-5.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Original Concept made on kickoff day.</figcaption>
+      </figure>
+
+      <p>Since the design couldn't reach the L4 pole (one of 4192's design criteria in 2025), we didn't pursue the double-jointed arm design.</p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/image-6.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Original concept arm reach, ~2ft short of the height required.</figcaption>
+      </figure>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/robot(21).png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Robot Front</figcaption>
+      </figure>
+
+      <p>Coaxialized arms are popular in robots due to the lessened mass and wiring on moving joints. </p>
+
+      <h2>Design Criteria</h2>
+      <p>The design should:</p>
+      <ul>
+        <li>Minimize use of custom parts.</li>
+        <li>Be fabricated using common machinery (Mostly 3D Printed; CNC Router or Laser Cutter if absolutely neccessary).</li>
+        <li>Use a coaxialized wrist.</li>
+        <li>Adapt to play most pick and place games.</li>
+      </ul>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/master(9).png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Skeleton sketch of robot while intaking.</figcaption>
+      </figure>
+
+      <p>Using Onshape's derive tool I also made the design parametric. This allowed the design to be complete after a dozen or so hours of CADing.</p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/flexible master.png" style="max-width: 45%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">A movable sketch of the robot verified that the design can reach the L4 pole.</figcaption>
+      </figure>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/Screenshot 2026-09-14 155443.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Coaxialized Wrist Powertrain</figcaption>
+      </figure>
+
+      <h2>Results</h2>
+      <p>While I didn't complete the design before my freshman year of college began, the design concept did achieve the mechanical requirements.</p>
+      
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/Screenshot 2026-09-14 155443.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Coaxialized Wrist Powertrain</figcaption>
+      </figure>
+
+      <p>Packaging the wrist and roller powertrains was more difficult than expected, and I ultimately was unable to keep the motors stationary (they still rotate with the first arm joint).</p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/Screenshot 2026-09-14 155848.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Roller Coaxialized Powertrain</figcaption>
+      </figure>
+
+      <p>The design also used in-tube belt, the first time I've used it.</p>
+
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="../assets/Screenshot 2026-09-14 160926.png" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Roller Final Powertrain</figcaption>
+      </figure>
+
+      <p>The rollers used geometry from Team 2910's 2025 robot. It was also the first time I used custom bevel gears on a design.</p>
+
+    </article>
+
+    <hr style="margin-top: 3rem;">
+
+    <!-- Giscus Comment System Integration -->
+    <section class="comments-section">
+      <h3>Discussion & Feedback</h3>
+      <script src="https://giscus.app/client.js"
+        data-repo="yourusername/your-repo-name"
+        data-repo-id="REPLACE_WITH_REPO_ID"
+        data-category="Announcements"
+        data-category-id="REPLACE_WITH_CATEGORY_ID"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Trevor Dayal</span>
+    <div class="social-links">
+      <a href="https://github.com/trevington" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.84 1.13.13.28.67 1.05 2.51.74.01.85.02 1.57.02 1.8 0 .21-.15.45-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/trevordayal/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg height="18" width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
