@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FSAE Powertrain Simulation — Trevor Dayal</title>
+  <title>Reefscape — Trevor Dayal</title>
   <!-- Adjust stylesheet path if nested in a subfolder like /projects/ -->
   <link rel="stylesheet" href="../style.css">
   <script>
     (function() {
       const hour = new Date().getHours();
       // Adjust these hours to your preference (e.g., 19 is 7 PM, 6 is 6 AM)
-      if (hour < 6 || hour >= 19) {
+      if (hour < 7 || hour >= 20) {
         document.documentElement.classList.add('dark-mode');
       }
     })();
@@ -30,72 +30,50 @@
 
   <main>
     <article>
-      <h1>FSAE Powertrain Simulation & Optimization</h1>
+      <h1>FRC 2025 Design</h1>
       <p style="color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; margin-top: -0.5rem;">
-        Published: September 13, 2026 &bull; Categories: Simulation, EV Powertrain
+        Published: September 16th, 2026
       </p>
 
       <hr>
 
       <h2>Overview</h2>
-      <p>Building on the work of several graduating seniors, I developed a full vehicle powertrian simulator for CR31, Cyclone Racing's 31st car and 3rd EV. The simulation is built using Python and can be scripted and optimized.</p>
-      
-      <figure>
-        <img src="../assets/simulation/cell_count_study.avif" alt="Cell count study for battery pack optimization">
-        <figcaption>Comparison of different cell count configurations for endurance laptimes.</figcaption>
-      </figure>
-      
-      
+      <p>Reefscape was team 4192 Jaguar Robotics' 14th season. As team captain and design lead, I led our 35 person team to the world championship in Houston, ending a 4 year drought.</p>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube-nocookie.com/embed/sTShC6tpgjM" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+        </iframe>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: -1.5rem; margin-bottom: 2.5rem;">
+        Our 2025 Robot Reveal.
+      </p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/reefscape-skeleton-iso.png" alt="preliminary robot cad">
+          <figcaption>Skeleton sketch of Iris.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/plano_bot.jpg" alt="Block cad of design concept">
+          <figcaption>Block cad of double-jointed arm robot design.</figcaption>
+        </figure>
+      </div>
+
       <h2>Design Criteria</h2>
-      <ul>
-        <li>Map powertrain losses</li>
-        <li>Optimize powertrain use across all dynamic events</li>
-        <li>Determine heat rejection requirements</li>
-        <li>Use data from CR30 to validate simulations</li>
-        <li>Provide quick results (~1 second per endurance lap on a student laptop)</li>
-      </ul>
+      <p>:</p>
 
-      <p>The lightweight requirement was a heavy constraint, as this project was my first time being performance constrained.</p>
-
-      <h2>Simulation Architecture</h2>
-      <figure>
-        <img src="../assets/simulation/cr31_sim_losses_map.avif" alt="Powertrain losses map">
-        <figcaption>Diagram showing all powertrain losses.</figcaption>
-      </figure>
-      
-      <p>Firstly, I made a list of all the major causes of losses in the powertrain system. For the simulation to be accurate, all loss calculations would need to be checked by other powertrain engineers.</p>
-
-      <figure>
-        <img src="../assets/simulation/cr31_simulation_architecture.avif" alt=" Simulation architecture diagram">
-        <figcaption>Sim architecture diagram.</figcaption>
-      </figure>
-
-      <p>The sim architecture (the fifth concept attempted using Gemini prototypes) was selected to decouple the physics simulations (motor.py and vd.py) from the overall sim. This allows engineers to reveiw more sizable portions of the code.</p>
-
-<!--      <pre><code># Example script invocation snippet
-import openmdao.api as om
-from pymotorcad.segments import MotorCAD
-
-model = om.Group()
-# Setup optimization routine...
-</code></pre>-->
-
-      <h2>Validation</h2>
-      <p>Unfortunately the whole-vehicle simulation validation plan ended when our inverter failed while testing CR30 in the Summer.</p>
-
-      <figure>
-        <img src="../assets/DTI-HV550-Open.avif" alt="A picture of our inverter with two failed IGBTs"">
-        <figcaption>Our HTI-HV550 inverter. Two of the IGBTs failed.</figcaption>
-      </figure>
-
-      <p>Since we couldn't acquire any new validation data, the only data available to me was from our early Summer testing logs. The 512mb of data was limited to short accelerations instead of full endurance runs, making heat generation validation difficult.</p>
-
-
-      <h2>Results </h2>
-      <p>.</p>
+      <h2>Results</h2>
+      <p>:</p>
       
       <!-- Example image layout -->
-
+      <figure style="margin: 2rem 0; text-align: center;">
+        <img src="path-to-image.png" alt="Description" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fig.</figcaption>
+      </figure>
 
     </article>
 
@@ -135,6 +113,5 @@ model = om.Group()
     </div>
   </footer>
 
-</b
-ody>
+</body>
 </html>
