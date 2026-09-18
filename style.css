@@ -305,3 +305,27 @@ figure img {
   height: 100%;
   border: 0;
 }
+
+/* Side-by-Side Video Grid */
+.video-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.video-row video {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* Fallback for smaller screens: stack videos vertically */
+@media (max-width: 600px) {
+  .video-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

@@ -86,7 +86,7 @@
 
       <div class="image-row">
         <figure>
-          <img src="../assets/FRC/reefscape/initial_reefscape_cad.png">
+          <img src="../assets/FRC/reefscape/2dof_arm_L3.png">
           <figcaption>Initial Robot Design.</figcaption>
         </figure>
 
@@ -98,26 +98,286 @@
 
       <p>We also wanted to score algae in the processor to assist in reaching the Coral RP.</p>
 
-      <h2>Prototyping</h2>
-      <p></p>
+      <h2>Development</h2>
 
-      <div class="video-container">
-        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLn6Bgai_O2OkrWOIGTVfSHl3363EkRx72&origin=https://trevington.github.io" 
-                title="YouTube playlist player" 
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-        </iframe>
+      <figure>
+        <img src="../assets/FRC/reefscape/JR25 Version History.png">
+        <figcaption>Our Onshape CAD Version History. Horizontal axis is overall design change, vertical axis is subsystem design change.</figcaption>
+      </figure>
+
+      <p>The robot development started with a few concepts.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/kickoff_robot_concept_drawing.jpg">
+        <figcaption>Hand-sketch of robot made at kickoff.</figcaption>
+      </figure>
+
+      <p>After some exploratory design work, we realized that in order to score on L4 we'd need an elevator or large arm. Because we had no experience mitigating backlash on large arms, we decided to use an elevator to lift the coral.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/initial_reefscape_cad.png" alt="Coral Station Prototype.">
+          <figcaption>Concept robot scoring on L3 (elevator & arm).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/2dof_arm_L2.png">
+          <figcaption>Concept robot scoring on L2 (2 arms).</figcaption>
+        </figure>
       </div>
 
-      <h2>Results</h2>
-      <p>:</p>
-      
-      <!-- Example image layout -->
-      <figure style="margin: 2rem 0; text-align: center;">
-        <img src="path-to-image.png" alt="Description" style="max-width: 100%; border: 1px solid var(--border); border-radius: 4px;">
-        <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Fig.</figcaption>
+      <p>We had used elevators on our 2023 and 2024 robots, and felt comfortable reusing the elevator architecture.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/elevator_v1_cad.png">
+          <figcaption>Elevator Design.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/arm_v1_cad.png">
+          <figcaption>Arm Design.</figcaption>
+        </figure>
+      </div>
+
+      <p>The arm was more challenging than the elevator. In 2024 our robot's arms had chain tension and backlash issues that limited the performance.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_robot_coax_arm.jpg">
+        <figcaption>Coaxialized arm design. The roller belt is on a hex shaft inside of the spline controlling the arm's rotation.</figcaption>
       </figure>
+
+      <p>Since our robot needed a human to feed it coral, we quickly built a prototype feeding station.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/prototype_coral_station.jpg" alt="Coral Station Prototype.">
+        <figcaption>Our prototype coral station.</figcaption>
+      </figure>
+
+      <p>We used the station to prototype our ramp geometry. An angle of 15&deg; was found to work best (a range of 10&deg; to 25&deg; was tested). </p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/plano ramp.jpg" alt="preliminary robot cad">
+          <figcaption>Original ramp design used at Plano.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/plano_ramp_tape.jpg">
+          <figcaption>Ramp with low-friction teflon tape.</figcaption>
+        </figure>
+      </div>
+
+      <p>To avoid some of the electrical issues of 2024, we prototyped our elevator's energy chain.</p>
+
+      <div class="video-row">
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/energy_wire.mp4" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/elevator_PID.mp4" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <h2>Testing</h2>
+
+      <div class="video-row">
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/first_drive.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/plano_algae_removal_and_score.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <figcaption>Robot first drive and first algae removal</figcaption>
+
+      <p>We made good progress, and our robot was ready 1 week before our first event at Plano.</p>
+
+      <h2>Plano District Event</h2>
+
+      <div class="video-row">
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/Plano_L4_intaked.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/Plano_L4_score.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/videos/Plano_front_L4.gif" alt="preliminary robot cad">
+          <figcaption>Our robot in its first match.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/plano_alliance.jpg">
+          <figcaption>Our Alliance at Plano.</figcaption>
+        </figure>
+      </div>
+
+      <p>We finished qualifications ranked 24th and were selected as the first pick of the 7th alliance. Our alliance was eliminated in the third round of playoffs after going 1-2.</p>
+
+      <p>While our robot didn't work as expected (more on that in the next section), we did win the Impact Award, the highest possible award!</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/plano_impact.jpg">
+        <figcaption>Team Picture with Plano Impact Blue Banner.</figcaption>
+      </figure>
+
+      <h2>Post-Plano</h2>
+      <h3>Ramp</h3>
+
+      <p>Unfortunately during Plano our ramp broke while transporting the robot. While our quick zip-tie fix worked in the moment, we decided to use the opportunity to redesign and rebuild our ramp.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_ramp.jpg">
+        <figcaption>New ramp mounted on robot.</figcaption>
+      </figure>
+
+      <p>When our ramp broke coral easily became stuck in the chassis. Before Fort Worth we added some chicken-wire to help coral roll off of the robot.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_chicken_wire.jpg">
+        <figcaption>Chicken Wire being installed.</figcaption>
+      </figure>
+
+      <h3>Arm</h3>
+      <p>While our arm worked great with negligible backlash, the bolts transfering torque from the sprocket to the main plates began shearing the SRPP.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/arm_1_weight.jpg">
+          <figcaption>Old 1/5th inch SRPP arm.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_arm_mass.jpg">
+          <figcaption>New 5052 aluminum arm on scale.</figcaption>
+        </figure>
+      </div>
+
+      <p>We changed the arm's sideplates to use 5052 aluminum instead of SRPP. Since the arm didn't experience any collisions the SRPP's flexibility was not needed.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/redesigned_arm.png">
+        <figcaption>New arm and spline.</figcaption>
+      </figure>
+
+      <p>To coaxialize the arm the design was switched from a bolt pattern to an aluminum spline.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_new_LEDs.jpg">
+        <figcaption>New LED pattern.</figcaption>
+      </figure>
+
+      <p>We also changed the elevator's motors from Vortexes to Krakens to get closer to the target ~0.5 second extension time</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_elevator_krakens.jpg">
+        <figcaption>Krakens driving elevator.</figcaption>
+      </figure>
+
+      <p>We also made sure to maximize our practice time before Fort Worth.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/bbq_practice_preftw.jpg">
+          <figcaption>Practicing with 2714 before Fort Worth.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/driver_station.jpg">
+        </figure>
+      </div>
+
+      <h2>Fort Worth District Event</h2>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_packing.jpg">
+          <figcaption>our U-Haul packed up for Fort Worth.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/plano_schedule.jpg">
+          <figcaption>Our Match Schedule.</figcaption>
+        </figure>
+      </div>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_weight.jpg">
+          <figcaption>Our robot being weighed.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_bumper.jpg">
+          <figcaption>Our cleaned bumpers.</figcaption>
+        </figure>
+      </div>
+
+      <p>Fort Worth started hot, with our robot improvements and practice making cycle times quick.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_bbq_match.jpg">
+          <figcaption>Qualification High Score Match - 190 points with 2714 and 457.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_high_score.jpg">
+        </figure>
+      </div>
+
+      <p>Unfortunately our fortune ended with our ramp breaking midway through the competition.</p>
+
+      <div class="image-row">
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_broken_ramp.jpg">
+          <figcaption>Broken ramp.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../assets/FRC/reefscape/ftw_ramp_crack.jpg">
+          <figcaption>:(</figcaption>
+        </figure>
+      </div>
+
+      <p>We were able to get our ramp fixed, but we weren't able to reattach the active wheels. This made our intakes less consistent.</p>
+
+      <p>8874 selected us in the second round of alliance selection, and we went 1-2 in playoffs after putting up some high scores.</p>
+
+      <figure>
+        <img src="../assets/FRC/reefscape/ftw_playoffs.jpg">
+        <figcaption>Our alliance (red, right) competing in playoffs.</figcaption>
+      </figure>
+
+      <div class="video-row">
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/mercs_2_coral_big_fail.MOV" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+        
+        <video controls autoplay muted loop playsinline>
+          <source src="../assets/FRC/reefscape/videos/mercs_2_coral.MOV" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Auto development.</figcaption>
+      
+      <h2>Results</h2>
+      <p></p>
 
     </article>
 
